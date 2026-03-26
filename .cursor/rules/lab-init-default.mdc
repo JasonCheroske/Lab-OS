@@ -1,0 +1,18 @@
+---
+description: Prefer lab-init skill for bootstrap/setup intents
+alwaysApply: true
+---
+
+# Default Setup Skill
+
+When the user asks to bootstrap, initialize, or set up the repository (including `/lab-init`), prefer the `lab-init` project skill first.
+For non-Cursor setup, prefer the canonical commands `npm run lab:init` and `npm run lab:verify`.
+
+Trigger phrases include:
+- `/lab-init`
+- `bootstrap this lab`
+- `initialize this project`
+- `set up this repo`
+- `first-time setup`
+
+If the user explicitly requests a different workflow, follow the user override.

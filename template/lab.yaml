@@ -1,0 +1,28 @@
+schemaVersion: "1.0.0"
+labId: "example-lab"
+name: "Example Lab"
+maturityStage: "experiment"
+modules:
+  intent: true
+  reality: true
+  delta: true
+  behavior: true
+  evidence: true
+governance:
+  mode: "hybrid"
+  roles:
+    - owner
+    - senior_engineer
+    - engineer
+    - agent_operator
+  editorAttributionPolicy: "human_only"
+  approvalMatrix:
+    architecture: [owner, senior_engineer]
+    public_interface: [owner, senior_engineer]
+    security_critical: [owner, senior_engineer]
+    internal_refactor: [owner, senior_engineer, engineer]
+  overrides: []
+requiredChecks:
+  - docs_present
+  - signoff_policy_present
+  - readiness_checks_present
