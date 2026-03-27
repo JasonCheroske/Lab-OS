@@ -2,12 +2,15 @@
   "name": "lab-os",
   "version": "0.1.0",
   "description": "Canonical GitHub seed for AI-native engineering lab scaffolding, governance, and validation workflows.",
-  "private": true,
+  "private": false,
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/REPLACE_WITH_ORG/lab-os-lab.git"
+    "url": "git+https://github.com/REPLACE_WITH_ORG/lab-os-lab.git"
   },
   "bugs": {
     "url": "https://github.com/REPLACE_WITH_ORG/lab-os-lab/issues"
@@ -20,6 +23,25 @@
     "scaffolding",
     "validation"
   ],
+  "bin": {
+    "lab-os": "bin/lab-os.mjs"
+  },
+  "files": [
+    "bin",
+    "schema",
+    "template",
+    "scripts",
+    "docs",
+    "examples",
+    "tests",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "init": "node scripts/init-lab.mjs",
     "validate": "node scripts/validate-lab.mjs",

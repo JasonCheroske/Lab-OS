@@ -8,7 +8,7 @@ It extends normal CI/CD and Agile delivery with:
 - durable knowledge graph conventions
 - reproducible lab scaffolding for teams using different AI systems
 
-This repository is released as a source seed first. Package-manager distribution is intentionally deferred to a later phase.
+This repository is released as a **GitHub source seed** and as an **npm package** (`lab-os`). The initialized lab tarball remains the primary artifact for teams that want a copy-paste bundle without installing from a registry.
 
 ## Prerequisites
 
@@ -26,6 +26,25 @@ lab-os-lab/
   examples/
   tests/
 ```
+
+## npm package (Phase 2)
+
+Install the toolkit from the public registry and use the `lab-os` CLI (same behavior as the npm scripts):
+
+```bash
+npm install -g lab-os
+lab-os lab-init ./.tmp/quickstart-lab
+lab-os lab-verify
+```
+
+Or run without a global install:
+
+```bash
+npx lab-os@latest init ./my-lab
+npx lab-os@latest validate --target ./my-lab
+```
+
+Publishing, semver policy, and registry governance are documented under `docs/40-release/` (see `NPM_REGISTRY_GOVERNANCE.md`, `SEMVER_POLICY.md`) and ADR `docs/50-adr/ADR-0001-package-boundaries-and-npm-distribution.md`.
 
 ## Start here: initialized lab tarball (primary release path)
 
@@ -75,7 +94,7 @@ npm run lab:verify
 
 ## Cursor shortcut (optional)
 
-Use `/lab-init` in Cursor to run the same bootstrap workflow. Cursor is optional; all setup and verification paths above work without Cursor.
+Use `/lab-init` in Cursor to run the **conversation-first** workflow: design and tailor a project (ASCII tree, Mermaid, sprout handoff) before any scaffolding; optional **sprout** includes Lab OS seed commands when you choose that mode. See `.cursor/skills/lab-init/SKILL.md`. All npm paths above work without Cursor.
 
 ## Expected command output
 
@@ -100,9 +119,9 @@ Promotion checks should run against a temporary target to avoid mutating checked
 ## Release model
 
 - Phase 1: GitHub release with initialized lab tarball as primary user artifact
-- Phase 2: package-manager release strategy (npm and others)
+- Phase 2: npm distribution (`lab-os`), semver policy, CI dry-run and tag publish workflows
 
-See `docs/40-release/MIGRATION_CHECKLIST.md` for release sequencing and `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` for deferred package work.
+See `docs/40-release/MIGRATION_CHECKLIST.md` for release sequencing, `docs/40-release/NPM_REGISTRY_GOVERNANCE.md` for publish credentials, and `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` for backlog history and status.
 
 ## Troubleshooting
 

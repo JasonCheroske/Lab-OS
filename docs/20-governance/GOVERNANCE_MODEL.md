@@ -40,6 +40,6 @@ Default mode is `hybrid`:
 
 | Date       | Change reference        | Approver (human) | Role            | Decision       |
 | ---------- | ----------------------- | ---------------- | --------------- | -------------- |
-| 2026-03-26 | docs taxonomy migration | Jason Cheroske   | senior_engineer | Jason Cheroske |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske   | senior_engineer | approved       |
 
 

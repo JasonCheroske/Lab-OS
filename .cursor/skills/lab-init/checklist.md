@@ -1,47 +1,71 @@
-# Lab Init Checklist
+# Lab Init Checklist (`/lab-init`)
 
-Use this checklist when `/lab-init` is triggered.
+Use this checklist when `/lab-init` is triggered. **Phase A runs first** (design only by default). **Phase B** runs only after explicit user confirmation.
 
-## Preconditions
+---
 
-- [ ] Node.js version is 20 or newer
-- [ ] npm version is 10 or newer
-- [ ] repository root is `lab-os-lab`
+## Phase A — Design and tailoring (default)
 
-## Structure checks
+### Conversation
 
-- [ ] `docs/00-index/DOCS_MAP.md` exists
-- [ ] `docs/00-index/DOC_GOVERNANCE.md` exists
-- [ ] `docs/10-architecture/README.md` exists
-- [ ] `docs/20-governance/README.md` exists
-- [ ] `docs/30-runbooks/README.md` exists
-- [ ] `docs/40-release/README.md` exists
-- [ ] `docs/60-reference/README.md` exists
-- [ ] `docs/90-backlog/README.md` exists
+- [ ] Project shape captured (monolith, multi-service, multi-repo, or unknown)
+- [ ] Stacks / runtimes captured (or marked TBD)
+- [ ] Knowns and unknowns listed
+- [ ] Anchor points and constraints captured
+- [ ] Assumptions and risks stated
+- [ ] Local → dev/staging → prod path and validation gates described (or N/A)
 
-## Commands
+### Design artifacts (content in chat or logical paths for later files)
 
-```bash
-npm install
-npm run lab:init -- ./.tmp/quickstart-lab
-npm run lab:verify
-```
+- [ ] `docs/project-structure.md` (or equivalent section) — **ASCII tree** with per-folder annotations
+- [ ] Mermaid diagram(s) — count matches complexity (one simple; **multiple** when boundaries/flows/environments need it)
+- [ ] Diagram hygiene — **no secrets** (placeholders only)
+- [ ] `docs/README.md` mini-index **or** equivalent list of links (optional but recommended)
+- [ ] Stable logical paths documented (`docs/project-structure.md`, `docs/diagrams/` or `docs/architecture.md`)
 
-Explicit CLI equivalent:
+### Side-effect rule
 
-```bash
-npm run init -- --target ./.tmp/quickstart-lab
-npm test
-npm run validate -- --target ./.tmp/quickstart-lab
-npm run validate -- --target ./examples/minimal-lab
-npm run validate -- --target ./examples/hybrid-governance-lab
-npm run promote -- --target ./.tmp/quickstart-lab --to poc
-```
+- [ ] **No** `npm install`, **no** `npm run init` / `lab:init`, **no** file writes **unless** user explicitly requested execution in Phase A
 
-## Result template
+### Phase A closeout
+
+- [ ] User asked: proceed to sprout? (yes / no)
+
+---
+
+## Phase B — Sprout (only if user opts in)
+
+### Decisions
+
+- [ ] Target folder path recorded
+- [ ] Sprout mode chosen: `docs-only` | `lab-os-seed` | `custom`
+- [ ] User confirmed **Execute sprout** before any command or write
+
+### Handoff
+
+- [ ] **Sprout handoff** block produced (target, mode, summary, authoritative docs, steps, do-not, STOP rules) — see [SKILL.md](SKILL.md)
+
+### Mode-specific
+
+**docs-only**
+
+- [ ] Plan lists which files to create/update under target; user confirms writes
+
+**lab-os-seed** (this `lab-os-lab` repository only)
+
+- [ ] Node.js 20+ and npm 10+ available (if running commands here)
+- [ ] `npm install` then `npm run lab:init -- <target>` then `npm run lab:verify` (or equivalent agreed commands)
+- [ ] Repo structure checks if validating this seed: `docs/00-index/`, `docs/10-architecture/`, … `schema/lab.schema.json`, `scripts/*.mjs`
+
+**custom**
+
+- [ ] Ordered steps for stack-specific scaffolding; destructive steps behind explicit confirmation
+
+### Result template
 
 ```text
-Status: PASS|FAIL
+Status: PASS|FAIL|BLOCKED
+Phase: A|B
 Checks passed:
 - ...
 Checks failed:

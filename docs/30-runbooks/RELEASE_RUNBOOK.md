@@ -70,4 +70,4 @@ If wrapper and explicit CLI outcomes differ, treat as release blocker.
 
 | Date | Change reference | Approver (human) | Role | Decision |
 |---|---|---|---|---|
-| 2026-03-26 | docs taxonomy migration | pending | senior_engineer | pending |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | approved |

@@ -38,6 +38,18 @@ This backlog starts after GitHub seed release stability is confirmed.
 - Store publish credentials in CI secrets only.
 - Require approval gate before publish jobs can run.
 
+## Implementation status (repository)
+
+| Backlog section | Status | Where |
+|-----------------|--------|--------|
+| 1) Distribution targets | Done (npm primary) | `package.json`, [../40-release/NPM_REGISTRY_GOVERNANCE.md](../40-release/NPM_REGISTRY_GOVERNANCE.md) |
+| 2) Package shape | Done (single package) | [../50-adr/ADR-0001-package-boundaries-and-npm-distribution.md](../50-adr/ADR-0001-package-boundaries-and-npm-distribution.md), `package.json` `files` |
+| 3) Versioning and release policy | Done | [../40-release/SEMVER_POLICY.md](../40-release/SEMVER_POLICY.md), [CHANGELOG.md](../../CHANGELOG.md) |
+| 4) CI/CD publishing | Done | `.github/workflows/npm-dry-run.yml`, `.github/workflows/npm-publish.yml`, `.github/workflows/external-bootstrap-smoke.yml` |
+| 5) Credentials and governance | Done | [../40-release/NPM_REGISTRY_GOVERNANCE.md](../40-release/NPM_REGISTRY_GOVERNANCE.md) (`NPM_TOKEN`, GitHub Environment `npm-publish`) |
+
+CLI entry point: `bin/lab-os.mjs` (`lab-os` on `PATH` after `npm install -g lab-os`).
+
 ## Exit criteria for Phase 2 start
 
 - Seed release `v0.1.0` has completed.
@@ -49,3 +61,4 @@ This backlog starts after GitHub seed release stability is confirmed.
 | Date | Change summary | Editor |
 |---|---|---|
 | 2026-03-26 | Moved to taxonomy path and standardized metadata. | Jason Cheroske |
+| 2026-03-26 | Recorded implementation status (npm package, CI, governance docs, ADR-0001). | Jason Cheroske |

@@ -32,6 +32,6 @@
 
 | Date       | Change reference        | Approver       | Role            | Decision       |
 | ---------- | ----------------------- | -------------- | --------------- | -------------- |
-| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | Jason Cheroske |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | approved |
 
 
