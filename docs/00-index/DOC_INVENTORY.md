@@ -18,6 +18,8 @@ This inventory maps existing documents into the canonical taxonomy for `lab-os-l
 | `docs/RELEASE_NOTES_v0.1.0.md` | `40-release` | `docs/40-release/RELEASE_NOTES_v0.1.0.md` |
 | `docs/PHASE2_PACKAGE_MANAGER_BACKLOG.md` | `90-backlog` | `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` |
 | `docs/COPY_READY_INVENTORY.md` | `40-release` | `docs/40-release/COPY_READY_INVENTORY.md` |
+| `docs/00-index/templates/PATTERN_CARD_TEMPLATE.md` | `00-index` | `docs/00-index/templates/PATTERN_CARD_TEMPLATE.md` |
+| `docs/60-reference/PATTERN_CARDS_MAINTAINER_PRACTICE.md` | `60-reference` | `docs/60-reference/PATTERN_CARDS_MAINTAINER_PRACTICE.md` |
 
 ## Notes
 

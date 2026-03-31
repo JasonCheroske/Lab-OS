@@ -13,6 +13,8 @@ const templateRoot = path.join(projectRoot, "template");
 
 ensureDir(targetDir);
 copyDirectory(path.join(templateRoot, "lab"), path.join(targetDir, "lab"), force);
+copyDirectory(path.join(templateRoot, "docs"), path.join(targetDir, "docs"), force);
+copyDirectory(path.join(templateRoot, "root"), targetDir, force);
 
 const targetLabYaml = path.join(targetDir, "lab.yaml");
 if (force || !fileExists(targetLabYaml)) {

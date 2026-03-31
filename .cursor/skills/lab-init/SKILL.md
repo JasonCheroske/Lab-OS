@@ -6,7 +6,9 @@ description: >-
 
 # Lab Init (`/lab-init`)
 
-**Default behavior:** **Phase A — Design & Tailoring** (conversation first, **no file writes and no install/init commands** unless the user explicitly asks for execution inside Phase A).
+**Vocabulary:** **Phase A = Plan** (design and tailoring with the user and AI). **Phase B = Sprout execution** (materialize or run agreed steps after confirmation). **Planting** the seed at a root and **sprouting** commits that folder as a **lab workspace**—**practically irreversible** in the Lab OS model (no automated un-sprout). See [docs/60-reference/FOUNDATIONS_VOCABULARY.md](../../../docs/60-reference/FOUNDATIONS_VOCABULARY.md).
+
+**Default behavior:** **Phase A — Design & Tailoring (Plan)** (conversation first, **no file writes and no install/init commands** unless the user explicitly asks for execution inside Phase A).
 
 **Optional:** **Phase B — Sprout** only after the user confirms **target path**, **sprout mode**, and **execution**.
 
@@ -20,6 +22,7 @@ Non-Cursor users can mirror Phase B for this repo with `npm run lab:init` / `npm
 - If the user demands commands in Phase A, confirm intent; otherwise keep outputs as **design text** only.
 - Produce a **design package** that matches project complexity: one Mermaid diagram for simple systems; **multiple** focused diagrams when boundaries, flows, or environments would be unclear in one chart.
 - **Diagram hygiene:** no secrets in trees or Mermaid (use placeholders for tokens, keys, sensitive hostnames).
+- **This repository only:** the living Lab OS product map ([`docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md`](../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md)) is maintained with [**`/flow-diagram`**](../flow-diagram/SKILL.md)—compact Mermaid, lookup tables, no `click`. Use **`/lab-init`** for Phase A/B design and sprout; **`/flow-diagram`** when refreshing that canonical chart after structural changes.
 
 ### Question themes (adapt order to context)
 

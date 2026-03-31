@@ -14,6 +14,10 @@ test("init creates required lab artifacts", () => {
   runNode(["scripts/init-lab.mjs", "--target", tmpDir]);
   assert.ok(fs.existsSync(path.join(tmpDir, "lab.yaml")));
   assert.ok(fs.existsSync(path.join(tmpDir, "lab", "intent", "ARCHITECTURE_TARGET.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, "docs", "README.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, "docs", "project-structure.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, "README.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, "AGENTS.md")));
 });
 
 test("validate passes for generated lab", () => {

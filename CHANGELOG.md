@@ -10,6 +10,8 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 ### Added
 
+- Template **optional root onboarding**: `README.md` and `AGENTS.md` from `template/root/` merged to target on `init`; meta-lab [Seed startup runbook](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md); LAB_CONTRACT and adoption updates.
+- Template **optional root `docs/`**: `docs/README.md` and `docs/project-structure.md` copied on `init` (not validated); LAB_CONTRACT companion section; adoption and backlog docs ([`LAB_REALIGNMENT_BACKLOG.md`](docs/90-backlog/LAB_REALIGNMENT_BACKLOG.md)).
 - npm publishing workflow, dry-run CI, and external bootstrap smoke workflow.
 - `lab-os` CLI (`bin/lab-os.mjs`) for init, validate, promote, lab-init, lab-verify, and lab-tar.
 - Documentation: external bootstrap record, npm registry governance, semver policy, ADR-0001 package boundaries.

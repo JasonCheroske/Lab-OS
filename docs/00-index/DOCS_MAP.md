@@ -10,7 +10,7 @@ Primary navigation index for `lab-os-lab` documentation.
 - `docs/30-runbooks/` - operational playbooks and procedural guides
 - `docs/40-release/` - release notes, migration, release checklists
 - `docs/50-adr/` - architectural decision records
-- `docs/60-reference/` - vocabulary and deep references
+- `docs/60-reference/` - vocabulary, pattern-card maintainer practice, architecture flowchart (`LAB_ARCHITECTURE_FLOWCHART.md`), deep references
 - `docs/90-backlog/` - deferred and phase-planning documents
 
 ## Governance anchors
