@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Phase 2 Package-Manager Backlog
 
 **Intent:** Track deferred package-manager release work after seed release stability.

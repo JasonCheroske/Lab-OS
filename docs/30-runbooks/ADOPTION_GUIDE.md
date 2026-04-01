@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Adoption Guide
 
 **Intent:** Describe recommended adoption sequence for teams onboarding Lab OS using **plant → plan → sprout**.

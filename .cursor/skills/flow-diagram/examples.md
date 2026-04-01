@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Flow diagram — examples
 
 ## User prompts (apply the skill)

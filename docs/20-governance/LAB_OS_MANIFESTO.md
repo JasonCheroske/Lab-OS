@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # LAB OS Manifesto
 
 **Intent:** Capture the core principles that guide how the lab system is designed and operated.

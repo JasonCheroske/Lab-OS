@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Lab architecture flowchart
 
 Living map of this repository’s **control plane**, **lab model**, **tooling**, **docs**, **verification**, and **distribution**. Regenerate or refine with the Cursor skill **`/flow-diagram`** ([.cursor/skills/flow-diagram/SKILL.md](../../.cursor/skills/flow-diagram/SKILL.md)).

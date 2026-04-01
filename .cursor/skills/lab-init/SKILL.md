@@ -2,6 +2,8 @@
 name: lab-init
 description: >-
   Runs a conversation-first design and tailoring workflow for any project shape (single or multi-service, mixed stacks, infra), then optionally produces a paste-ready sprout handoff for the target folder. Use when the user says /lab-init or asks to bootstrap, initialize, design, or tailor a lab or project before scaffolding. Lab OS npm seed commands apply only when sprout mode is lab-os-seed in this repository.
+created: 2026-03-31
+updated: 2026-03-31
 ---
 
 # Lab Init (`/lab-init`)

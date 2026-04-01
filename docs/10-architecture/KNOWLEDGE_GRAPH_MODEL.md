@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Knowledge Graph Model
 
 **Intent:** Define the canonical lifecycle and node fields used for durable project knowledge.

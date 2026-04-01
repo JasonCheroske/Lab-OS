@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Migration Checklist
 
 **Intent:** Provide release-day migration and verification sequence for shipping the canonical seed.

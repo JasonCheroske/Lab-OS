@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-26
+---
+
 # Governance Docs
 
 - [LAB_OS_MANIFESTO.md](LAB_OS_MANIFESTO.md)

@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # GitHub Seed Release Runbook
 
 **Intent:** Define the canonical run procedure for shipping `lab-os-lab` as a public GitHub seed release.

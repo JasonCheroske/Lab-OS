@@ -1,4 +1,13 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Flow diagram — reference
+
+## Doc file metadata
+
+- Canonical Markdown outputs (e.g. [LAB_ARCHITECTURE_FLOWCHART.md](../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md)) must carry YAML **`created`** / **`updated`** frontmatter per [DOC_GOVERNANCE.md](../../../docs/00-index/DOC_GOVERNANCE.md). Bump **`updated`** whenever the diagram body or lookup tables change.
 
 ## Node and subgraph IDs
 

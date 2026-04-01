@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Project documentation (optional companion)
 
 This folder is **not** required by Lab OS validation. It is a lightweight index so humans and agents find context quickly. You can delete `docs/` and still pass `validate`; consider keeping an index elsewhere if you remove it.

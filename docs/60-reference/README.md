@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Reference Docs
 
 - [LAB_ARCHITECTURE_FLOWCHART.md](LAB_ARCHITECTURE_FLOWCHART.md) — maintained system map (see `/flow-diagram`)

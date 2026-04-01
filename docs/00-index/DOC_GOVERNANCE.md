@@ -1,6 +1,27 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Documentation Governance
 
 This project follows a strict documentation taxonomy by default, with explicit adaptation allowed when project scope changes.
+
+## Markdown frontmatter (`created` / `updated`)
+
+Every Markdown file in this repository (including `README.md`, `CHANGELOG.md`, Cursor skills under `.cursor/skills/`, `docs/`, `template/`, `examples/`, and `lab/`) must start with a YAML block:
+
+```yaml
+---
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+---
+```
+
+- **`created`** — Date this path first appeared in version control (stable; change only if the file is replaced wholesale).
+- **`updated`** — Date of the latest substantive content edit; bump it whenever you change meaning, structure, or operational behavior—not for typo-only fixes if you choose to skip (prefer bumping for any committed edit to keep history honest).
+
+Structural and non-structural templates embed placeholder dates—replace with real values when instantiating. **Last reviewed** and change-history tables remain required where those templates say so; frontmatter is an additional machine- and reader-friendly anchor.
 
 ## Structural vs non-structural docs
 

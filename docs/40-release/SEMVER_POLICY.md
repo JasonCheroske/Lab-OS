@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Semantic versioning policy
 
 **Intent:** Define how `lab-os` package versions change and how changelog entries are structured.

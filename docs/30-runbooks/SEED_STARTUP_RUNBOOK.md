@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Seed startup runbook
 
 **Intent:** Describe how to begin work in an **initialized Lab OS folder** (after plant)—the same narrative as plant → plan → sprout, written for the **consumer workspace** (not only the meta-lab).

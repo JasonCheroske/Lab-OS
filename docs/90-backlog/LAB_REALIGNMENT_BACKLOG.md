@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Lab realignment backlog
 
 **Intent:** Track **generalized** improvements to the seed and docs rigor, derived from maintainer pattern-card practice—**no** private repository names or codenames.

@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Governance Model
 
 **Intent:** Define the approval model, role structure, and override posture for project governance.

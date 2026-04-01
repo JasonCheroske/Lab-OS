@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-26
+---
+
 # Copy-Ready Inventory
 
 **Intent:** Enumerate the canonical files included when the seed is redistributed.

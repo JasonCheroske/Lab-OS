@@ -6,6 +6,8 @@ description: >-
   /flow-diagram or /flow-driagram (typo), asks for an architecture flowchart, system map, lab
   diagram refresh, gitdiagram-style diagram, Mermaid flowchart update, or keeping the canonical
   diagram in sync with the codebase.
+created: 2026-03-31
+updated: 2026-03-31
 ---
 
 # Flow diagram (`/flow-diagram`)
@@ -81,6 +83,7 @@ Repeat steps 3–5 until there are no broken paths or parse errors.
 
 ## Output contract
 
+- File opens with YAML **`created`** / **`updated`** per [DOC_GOVERNANCE.md](../../../docs/00-index/DOC_GOVERNANCE.md); bump **`updated`** on each content change to the diagram or tables.
 - One top-level fenced code block with language `mermaid`.
 - No `click` directives in the canonical file.
 - **Node lookup** and **Relationship lookup** tables with GitHub URLs (or updated base per remote).

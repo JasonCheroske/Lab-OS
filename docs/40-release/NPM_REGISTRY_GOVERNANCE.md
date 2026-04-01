@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # npm registry governance
 
 **Intent:** Define ownership, secrets handling, and rotation expectations for publishing `lab-os` to npm.

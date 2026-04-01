@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Backlog Docs
 
 - [PHASE2_PACKAGE_MANAGER_BACKLOG.md](PHASE2_PACKAGE_MANAGER_BACKLOG.md)

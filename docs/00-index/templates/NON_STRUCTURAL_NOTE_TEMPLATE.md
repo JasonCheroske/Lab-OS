@@ -1,3 +1,13 @@
+---
+created: 2026-03-31
+updated: 2026-03-26
+---
+
+---
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+---
+
 # <Note Title>
 
 **Intent:** <short purpose>

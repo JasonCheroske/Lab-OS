@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Lab Contract
 
 **Intent:** Define required artifacts and behaviors for each initialized lab.

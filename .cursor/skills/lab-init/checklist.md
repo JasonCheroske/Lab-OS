@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Lab Init Checklist (`/lab-init`)
 
 Use this checklist when `/lab-init` is triggered. **Phase A runs first** (design only by default). **Phase B** runs only after explicit user confirmation.

@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Lab-init verification (prompt-level)
 
 Use these scenarios before declaring the skill complete. **Do not** treat this as automated tests; run as structured role-play of `/lab-init`.

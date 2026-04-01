@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Foundations Vocabulary
 
 **Intent:** Define shared terms used across Lab OS docs and runbooks.

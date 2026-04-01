@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Maturity Model
 
 **Intent:** Define the progression stages and promotion requirements for labs.

@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-26
+---
+
 # Lab OS v0.1.0 (Seed Release)
 
 **Intent:** Record highlights and verification evidence for `v0.1.0`.

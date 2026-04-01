@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # ADR-0001: Package boundaries and npm distribution
 
 **Status:** Accepted  

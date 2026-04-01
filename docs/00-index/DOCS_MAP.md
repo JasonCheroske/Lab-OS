@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Docs Map
 
 Primary navigation index for `lab-os-lab` documentation.

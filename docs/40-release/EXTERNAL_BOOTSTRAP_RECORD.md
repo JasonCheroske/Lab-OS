@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # External bootstrap record
 
 **Intent:** Satisfy the Phase 2 exit criterion that at least one external party has successfully followed seed documentation to bootstrap a lab, and keep a durable record for audits.

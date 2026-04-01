@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # Lab-init examples
 
 Structure and index style are inspired by **directory tree + docs index** patterns (e.g. annotated `project-structure.md` and a `docs/README.md` table). Do not copy domain content from other projects.

@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-27
+---
+
 # ADR Index
 
 Use this folder for structural decision records.

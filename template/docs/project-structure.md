@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Project structure (starter)
 
 Annotate this tree as you **sprout** so “where things live” stays obvious.

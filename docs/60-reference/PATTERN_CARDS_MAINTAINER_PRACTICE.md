@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Pattern cards (maintainer practice)
 
 **Intent:** Describe how maintainers compare sprouted labs to the Lab OS seed **without** storing private repository identifiers in the public `lab-os-lab` git tree.

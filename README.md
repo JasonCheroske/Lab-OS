@@ -1,3 +1,8 @@
+---
+created: 2026-03-31
+updated: 2026-03-31
+---
+
 # Lab OS
 
 Lab OS is the canonical GitHub seed for AI-native engineering environments.
