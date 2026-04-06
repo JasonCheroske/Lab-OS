@@ -7,7 +7,7 @@ updated: 2026-03-31
 
 ## Doc file metadata
 
-- Canonical Markdown outputs (e.g. [LAB_ARCHITECTURE_FLOWCHART.md](../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md)) must carry YAML **`created`** / **`updated`** frontmatter per [DOC_GOVERNANCE.md](../../../docs/00-index/DOC_GOVERNANCE.md). Bump **`updated`** whenever the diagram body or lookup tables change.
+- Canonical Markdown outputs (e.g. [LAB_ARCHITECTURE_FLOWCHART.md](../../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md)) must carry YAML **`created`** / **`updated`** frontmatter per [DOC_GOVERNANCE.md](../../../../docs/00-index/DOC_GOVERNANCE.md). Bump **`updated`** whenever the diagram body or lookup tables change.
 
 ## Node and subgraph IDs
 
@@ -28,12 +28,12 @@ updated: 2026-03-31
 ## Links: tables vs Mermaid `click`
 
 - **Canonical Lab OS doc:** put navigation in **Markdown tables** after the diagram (node ID, path, GitHub `blob`/`tree` URL). That works in **Cursor preview** and on **github.com**.
-- **`click`** in Mermaid is **unreliable in Cursor** and other sandboxes; gitdiagram-style interactivity on the web does not transfer to the editor. Optional `click` may still appear in archived examples such as [EXAMPLE_FLOWCHART.md](../../../docs/60-reference/EXAMPLE_FLOWCHART.md)—do not copy `click` into [LAB_ARCHITECTURE_FLOWCHART.md](../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md).
+- **`click`** in Mermaid is **unreliable in Cursor** and other sandboxes; gitdiagram-style interactivity on the web does not transfer to the editor. Optional `click` may still appear in archived examples such as [EXAMPLE_FLOWCHART.md](../../../../docs/60-reference/EXAMPLE_FLOWCHART.md)—do not copy `click` into [LAB_ARCHITECTURE_FLOWCHART.md](../../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md).
 - Table URLs: files → `.../blob/<branch>/<path>`; directories → `.../tree/<branch>/<path>`.
 
 ## Optional styling (`classDef` / `class`)
 
-- Use the same palette style as [EXAMPLE_FLOWCHART.md](../../../docs/60-reference/EXAMPLE_FLOWCHART.md) for consistency.
+- Use the same palette style as [EXAMPLE_FLOWCHART.md](../../../../docs/60-reference/EXAMPLE_FLOWCHART.md) for consistency.
 - If a target viewer strips classes, the diagram remains valid without them; styling can be omitted for maximum portability.
 
 ## Canvas size (width)

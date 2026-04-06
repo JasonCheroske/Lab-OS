@@ -20,7 +20,7 @@ updated: 2026-03-31
 4. **Relationship lookup** table: from, relationship, to, solid vs dotted.
 5. Optionally **What changed** bullets for PRs.
 
-Inner diagram structure: subgraphs with `group_*` IDs, nodes with `node_*` IDs—match [EXAMPLE_FLOWCHART.md](../../../docs/60-reference/EXAMPLE_FLOWCHART.md) for **colors and grouping**, not for `click` or `<br/>` (use **` · `** on one line for Cursor).
+Inner diagram structure: subgraphs with `group_*` IDs, nodes with `node_*` IDs—match [EXAMPLE_FLOWCHART.md](../../../../docs/60-reference/EXAMPLE_FLOWCHART.md) for **colors and grouping**, not for `click` or `<br/>` (use **` · `** on one line for Cursor).
 
 ## Minimal Mermaid skeleton (expand from inventory)
 
@@ -58,5 +58,5 @@ Resolve `OWNER`, `REPO`, and `main` from `git remote get-url origin` (or user ov
 
 ## Reference output
 
-Full gitdiagram export with `click` (historical): [EXAMPLE_FLOWCHART.md](../../../docs/60-reference/EXAMPLE_FLOWCHART.md).  
-Maintained canonical (tables + no `click`): [LAB_ARCHITECTURE_FLOWCHART.md](../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md).
+Full gitdiagram export with `click` (historical): [EXAMPLE_FLOWCHART.md](../../../../docs/60-reference/EXAMPLE_FLOWCHART.md).  
+Maintained canonical (tables + no `click`): [LAB_ARCHITECTURE_FLOWCHART.md](../../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md).

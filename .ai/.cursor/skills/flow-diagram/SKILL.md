@@ -14,9 +14,9 @@ updated: 2026-03-31
 
 Maintain a **single canonical** `flowchart TD` that maps Lab OS **control plane, lab model, tooling, knowledge, verification, and distribution**. Mirror [gitdiagram](https://github.com/ahmedkhaleel2004/gitdiagram) in spirit only (no hosted pipeline): **structure → graph → Mermaid → path validation → fix drift**, same as GitDiagram’s tree-backed nodes and retry-on-bad-paths idea described in that project’s README.
 
-**House style reference:** [docs/60-reference/EXAMPLE_FLOWCHART.md](../../../docs/60-reference/EXAMPLE_FLOWCHART.md) (gitdiagram export; match colors and subgraph style; **omit `click` for this repo’s canonical doc**—see below).
+**House style reference:** [docs/60-reference/EXAMPLE_FLOWCHART.md](../../../../docs/60-reference/EXAMPLE_FLOWCHART.md) (gitdiagram export; match colors and subgraph style; **omit `click` for this repo’s canonical doc**—see below).
 
-**Canonical output file (default):** [docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md](../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md). Override only if the user names another path.
+**Canonical output file (default):** [docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md](../../../../docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md). Override only if the user names another path.
 
 **Initial multi-diagram product design** (broader than this skill): see [lab-init](../lab-init/SKILL.md).
 
@@ -83,7 +83,7 @@ Repeat steps 3–5 until there are no broken paths or parse errors.
 
 ## Output contract
 
-- File opens with YAML **`created`** / **`updated`** per [DOC_GOVERNANCE.md](../../../docs/00-index/DOC_GOVERNANCE.md); bump **`updated`** on each content change to the diagram or tables.
+- File opens with YAML **`created`** / **`updated`** per [DOC_GOVERNANCE.md](../../../../docs/00-index/DOC_GOVERNANCE.md); bump **`updated`** on each content change to the diagram or tables.
 - One top-level fenced code block with language `mermaid`.
 - No `click` directives in the canonical file.
 - **Node lookup** and **Relationship lookup** tables with GitHub URLs (or updated base per remote).

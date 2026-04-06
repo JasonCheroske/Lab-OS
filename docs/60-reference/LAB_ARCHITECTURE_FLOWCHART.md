@@ -5,7 +5,7 @@ updated: 2026-03-31
 
 # Lab architecture flowchart
 
-Living map of this repository’s **control plane**, **lab model**, **tooling**, **docs**, **verification**, and **distribution**. Regenerate or refine with the Cursor skill **`/flow-diagram`** ([.cursor/skills/flow-diagram/SKILL.md](../../.cursor/skills/flow-diagram/SKILL.md)).
+Living map of this repository’s **control plane**, **lab model**, **tooling**, **docs**, **verification**, and **distribution**. Regenerate or refine with the Cursor skill **`/flow-diagram`** ([.ai/.cursor/skills/flow-diagram/SKILL.md](../../.ai/.cursor/skills/flow-diagram/SKILL.md)).
 
 **Navigation:** Cursor’s Markdown preview usually **does not** make Mermaid `click` targets interactive. Use the **node lookup** and **relationship lookup** tables below after the diagram—links use the same `blob` / `tree` routes as github.com. Base URL: [`https://github.com/JasonCheroske/Lab-OS`](https://github.com/JasonCheroske/Lab-OS) on branch `main`. After renaming the remote or default branch, update the table links and this paragraph to match `git remote get-url origin`.
 
