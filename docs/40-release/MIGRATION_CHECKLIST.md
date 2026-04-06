@@ -3,11 +3,6 @@ created: 2026-04-06
 updated: 2026-04-06
 ---
 
----
-created: 2026-03-31
-updated: 2026-04-06
----
-
 # Migration Checklist
 
 **Intent:** Provide release-day migration and verification sequence for shipping the canonical seed and npm package.

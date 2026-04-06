@@ -3,11 +3,6 @@ created: 2026-04-06
 updated: 2026-04-06
 ---
 
----
-created: 2026-04-05
-updated: 2026-04-05
----
-
 # Agnostic skills
 
 Place skills here that work **regardless of which AI harness** you use (Cursor, Claude Code, Antigravity, or any other tool). Agnostic skills should not reference harness-specific invocation syntax (e.g. `/skill-name` is Cursor-specific).

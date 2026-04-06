@@ -3,11 +3,6 @@ created: 2026-04-06
 updated: 2026-04-06
 ---
 
----
-created: 2026-04-05
-updated: 2026-04-05
----
-
 # `.ai/` — AI workspace namespace
 
 This folder is the **harness-agnostic AI workspace** for this lab. It ships with every lab initialized from the Lab OS seed and is designed to grow with the lab over time.

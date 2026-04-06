@@ -3,11 +3,6 @@ created: 2026-04-06
 updated: 2026-04-06
 ---
 
----
-created: 2026-04-05
-updated: 2026-04-05
----
-
 # ADR-0003: `npm create lab-os` three-option picker
 
 **Status:** Planned (phase 2)

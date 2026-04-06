@@ -3,11 +3,6 @@ created: 2026-04-06
 updated: 2026-04-06
 ---
 
----
-created: 2026-04-05
-updated: 2026-04-05
----
-
 # Lean foundations
 
 **Intent:** Record the theoretical foundation underlying Lab OS methodology—specifically the seven Lean Software Development principles (Poppendieck) as they map to Lab OS mechanisms, and the two-mode operating model (research vs execution) that governs how humans and AI agents work inside a lab.

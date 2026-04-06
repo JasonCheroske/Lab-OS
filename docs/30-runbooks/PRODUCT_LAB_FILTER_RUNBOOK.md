@@ -3,11 +3,6 @@ created: 2026-04-06
 updated: 2026-04-06
 ---
 
----
-created: 2026-04-05
-updated: 2026-04-05
----
-
 # Product lab filter runbook
 
 **Intent:** Define the filter pass required before a matured product lab can be promoted to a `product-starter` archetype for use as a template by other teams.
