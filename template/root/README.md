@@ -42,7 +42,7 @@ Tarball-only setups can run the same scripts if Node is available and paths to `
 
 ## Deeper playbook
 
-Canonical startup narrative for initialized seeds: [Seed startup runbook](https://github.com/REPLACE_WITH_ORG/lab-os-lab/blob/main/docs/30-runbooks/SEED_STARTUP_RUNBOOK.md) (Lab OS repository). Adoption vocabulary: same repo, [Adoption guide](https://github.com/REPLACE_WITH_ORG/lab-os-lab/blob/main/docs/30-runbooks/ADOPTION_GUIDE.md).
+Canonical startup narrative for initialized seeds: [Seed startup runbook](https://github.com/JasonCheroske/Lab-OS/blob/main/docs/30-runbooks/SEED_STARTUP_RUNBOOK.md) (Lab OS repository). Adoption vocabulary: same repo, [Adoption guide](https://github.com/JasonCheroske/Lab-OS/blob/main/docs/30-runbooks/ADOPTION_GUIDE.md).
 
 ## Change history
 

@@ -28,8 +28,8 @@ If this repo is opened in Cursor, a conversation-first `/lab-init` workflow can 
 
 ## Reference
 
-- [Seed startup runbook](https://github.com/REPLACE_WITH_ORG/lab-os-lab/blob/main/docs/30-runbooks/SEED_STARTUP_RUNBOOK.md)
-- [Adoption guide](https://github.com/REPLACE_WITH_ORG/lab-os-lab/blob/main/docs/30-runbooks/ADOPTION_GUIDE.md)
+- [Seed startup runbook](https://github.com/JasonCheroske/Lab-OS/blob/main/docs/30-runbooks/SEED_STARTUP_RUNBOOK.md)
+- [Adoption guide](https://github.com/JasonCheroske/Lab-OS/blob/main/docs/30-runbooks/ADOPTION_GUIDE.md)
 
 ## Change history
 

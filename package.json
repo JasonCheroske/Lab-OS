@@ -1,6 +1,6 @@
 {
   "name": "lab-os",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Canonical GitHub seed for AI-native engineering lab scaffolding, governance, and validation workflows.",
   "private": false,
   "type": "module",
@@ -10,12 +10,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/REPLACE_WITH_ORG/lab-os-lab.git"
+    "url": "git+https://github.com/JasonCheroske/Lab-OS.git"
   },
   "bugs": {
-    "url": "https://github.com/REPLACE_WITH_ORG/lab-os-lab/issues"
+    "url": "https://github.com/JasonCheroske/Lab-OS/issues"
   },
-  "homepage": "https://github.com/REPLACE_WITH_ORG/lab-os-lab#readme",
+  "homepage": "https://github.com/JasonCheroske/Lab-OS#readme",
   "keywords": [
     "seed-repo",
     "ai-engineering",

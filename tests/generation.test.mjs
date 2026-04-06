@@ -52,3 +52,13 @@ test("scripts support positional args for npm passthrough", () => {
   const promoteOutput = runNode(["scripts/promote-stage.mjs", tmpDir, "poc"]);
   assert.match(promoteOutput, /Stage promoted to: poc/);
 });
+
+test("init creates .ai workspace with harness namespace structure", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-ai-"));
+  runNode(["scripts/init-lab.mjs", "--target", tmpDir]);
+  assert.ok(fs.existsSync(path.join(tmpDir, ".ai", "README.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, ".ai", "skills", "README.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, ".ai", "rules", "README.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, ".ai", ".cursor", "skills", "lab-init", "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, ".ai", ".cursor", "rules", "lab-init-default.mdc")));
+});

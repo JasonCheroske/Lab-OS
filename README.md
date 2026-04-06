@@ -1,6 +1,6 @@
 ---
 created: 2026-03-31
-updated: 2026-03-31
+updated: 2026-04-06
 ---
 
 # Lab OS
@@ -35,14 +35,15 @@ lab-os-lab/
   template/
     docs/          # optional companion stubs copied into initialized labs (see LAB_CONTRACT)
     root/          # README.md + AGENTS.md merged to target root on init (optional companions)
+    .ai/           # harness namespace (skills, rules, .cursor/) copied into initialized labs
   scripts/
   examples/
   tests/
 ```
 
-When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/root/`) plus **`docs/README.md`** and **`docs/project-structure.md`**, as recommended companions to `lab/*`; they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
+When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/root/`), **`docs/README.md`** and **`docs/project-structure.md`**, and **`.ai/`** (harness namespace), as recommended companions to `lab/*`; they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
 
-## npm package (Phase 2)
+## npm package
 
 Install the toolkit from the public registry and use the `lab-os` CLI (same behavior as the npm scripts):
 
@@ -66,19 +67,19 @@ Publishing, semver policy, and registry governance are documented under `docs/40
 Create the release artifact:
 
 ```bash
-npm run lab:tar -- v0.1.0
+npm run lab:tar -- v0.2.0
 ```
 
 This creates:
 
-- `.tmp/release-artifacts/lab-starter-v0.1.0.tar.gz`
-- `.tmp/release-artifacts/lab-starter-v0.1.0.tar.gz.sha256`
+- `.tmp/release-artifacts/lab-starter-v0.2.0.tar.gz`
+- `.tmp/release-artifacts/lab-starter-v0.2.0.tar.gz.sha256`
 
 End-user setup from tarball:
 
 ```bash
-tar -xzf lab-starter-v0.1.0.tar.gz
-cd lab-starter-v0.1.0
+tar -xzf lab-starter-v0.2.0.tar.gz
+cd lab-starter-v0.2.0
 npm run validate -- --target .
 npm run promote -- --target . --to poc
 ```
@@ -133,10 +134,10 @@ Promotion checks should run against a temporary target to avoid mutating checked
 
 ## Release model
 
-- Phase 1: GitHub release with initialized lab tarball as primary user artifact
-- Phase 2: npm distribution (`lab-os`), semver policy, CI dry-run and tag publish workflows
+- **GitHub:** source release, GitHub Releases, initialized lab tarball (optional primary for air-gapped or non-registry workflows).
+- **npm:** public package [`lab-os`](https://www.npmjs.com/package/lab-os) from tag `v*.*.*` (see `docs/40-release/NPM_REGISTRY_GOVERNANCE.md`, CI workflows `npm-dry-run` / `npm-publish`).
 
-See `docs/40-release/MIGRATION_CHECKLIST.md` for release sequencing, `docs/40-release/NPM_REGISTRY_GOVERNANCE.md` for publish credentials, and `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` for backlog history and status.
+See `docs/40-release/MIGRATION_CHECKLIST.md` for release sequencing and `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` for package-manager history and status.
 
 ## Troubleshooting
 

@@ -1,17 +1,15 @@
 ---
 created: 2026-03-31
-updated: 2026-03-27
+updated: 2026-04-06
 ---
 
 # Phase 2 Package-Manager Backlog
 
-**Intent:** Track deferred package-manager release work after seed release stability.
+**Intent:** Track package-manager release work after seed release stability; record completion and first publish.
 
-**Related paths:** [README.md](README.md), [../40-release/RELEASE_NOTES_v0.1.0.md](../40-release/RELEASE_NOTES_v0.1.0.md)
+**Related paths:** [README.md](README.md), [../40-release/RELEASE_NOTES_v0.1.0.md](../40-release/RELEASE_NOTES_v0.1.0.md), [../40-release/RELEASE_NOTES_v0.2.0.md](../40-release/RELEASE_NOTES_v0.2.0.md)
 
-**Last reviewed:** 2026-03-26 - moved into taxonomy and normalized with backlog metadata.
-
-This backlog starts after GitHub seed release stability is confirmed.
+**Last reviewed:** 2026-04-06
 
 ## 1) Distribution targets
 
@@ -55,15 +53,20 @@ This backlog starts after GitHub seed release stability is confirmed.
 
 CLI entry point: `bin/lab-os.mjs` (`lab-os` on `PATH` after `npm install -g lab-os`).
 
-## Exit criteria for Phase 2 start
+**First public npm publish:** `lab-os@0.2.0` (tag `v0.2.0`), after GitHub Environment approval on the publish workflow.
 
-- Seed release `v0.1.0` has completed.
-- At least one external user has successfully bootstrapped from seed docs.
-- Package boundaries and ownership are approved.
+## Exit criteria for Phase 2 start (historical)
+
+These were met before treating Phase 2 as closed:
+
+- Seed release `v0.1.0` completed ([GitHub](https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.1.0)).
+- External bootstrap path verified (CI: `external-bootstrap-smoke`; see [../40-release/EXTERNAL_BOOTSTRAP_RECORD.md](../40-release/EXTERNAL_BOOTSTRAP_RECORD.md)).
+- Package boundaries and ownership aligned with [ADR-0001](../50-adr/ADR-0001-package-boundaries-and-npm-distribution.md).
 
 ## Change history
 
 | Date | Change summary | Editor |
 |---|---|---|
+| 2026-04-06 | Exit criteria marked met; first npm publish noted as v0.2.0. | — |
 | 2026-03-26 | Moved to taxonomy path and standardized metadata. | Jason Cheroske |
 | 2026-03-26 | Recorded implementation status (npm package, CI, governance docs, ADR-0001). | Jason Cheroske |

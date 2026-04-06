@@ -1,6 +1,6 @@
 ---
 created: 2026-03-31
-updated: 2026-03-31
+updated: 2026-04-05
 ---
 
 # Lab Contract
@@ -35,14 +35,16 @@ These paths improve discoverability but are **not** required by `scripts/validat
 - Root **`AGENTS.md`** — suggested read order and rules of thumb for AI assistants.
 - Root **`docs/README.md`** — short index linking `lab/*` pillars (and room for product doc links).
 - Root **`docs/project-structure.md`** — starter tree and notes (e.g. engineering root vs git root).
+- **`.ai/`** — harness-agnostic AI workspace (skills, rules, and Cursor/Claude/other harness config). Recommended for AI-native labs; provides the investigation deck and prevents context drift across sessions. See [ADR-0002](../50-adr/ADR-0002-ai-harness-namespace.md) for the harness namespace model and gitignore policy.
 
-Initialized seeds copy these from the template (via `template/root/` and `template/docs/`); maintaining them is a team choice.
+Initialized seeds copy these from the template (via `template/root/`, `template/docs/`, `template/.ai/`); maintaining them is a team choice.
 
 ## Change history
 
 
 | Date       | Change summary                                   | Major structural change | Editor         |
 | ---------- | ------------------------------------------------ | ----------------------- | -------------- |
+| 2026-04-05 | Added `.ai/` harness namespace as recommended companion; linked ADR-0002. | no | — |
 | 2026-04-04 | Knowledge layer may be `lab/` or `.lab/` at repo root (same subtree); validation updated. | no                      | —              |
 | 2026-03-27 | Documented optional root `README.md`, `AGENTS.md`, and `docs/*` companions; validation unchanged. | no                      | Jason Cheroske |
 | 2026-03-26 | Migrated into taxonomy with governance metadata. | yes                     | Jason Cheroske |

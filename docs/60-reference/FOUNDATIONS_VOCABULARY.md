@@ -1,13 +1,13 @@
 ---
 created: 2026-03-31
-updated: 2026-03-31
+updated: 2026-04-05
 ---
 
 # Foundations Vocabulary
 
 **Intent:** Define shared terms used across Lab OS docs and runbooks.
 
-**Related paths:** [README.md](../../README.md), [../10-architecture/LAB_CONTRACT.md](../10-architecture/LAB_CONTRACT.md), [../30-runbooks/ADOPTION_GUIDE.md](../30-runbooks/ADOPTION_GUIDE.md)
+**Related paths:** [README.md](../../README.md), [../10-architecture/LAB_CONTRACT.md](../10-architecture/LAB_CONTRACT.md), [../30-runbooks/ADOPTION_GUIDE.md](../30-runbooks/ADOPTION_GUIDE.md), [LEAN_FOUNDATIONS.md](LEAN_FOUNDATIONS.md)
 
 **Last reviewed:** 2026-03-27 — plant / plan / sprout narrative and lab-as-workspace.
 
@@ -39,9 +39,17 @@ updated: 2026-03-31
 
 **Provenance rule:** Model/tool usage should be logged as provenance notes, not as editor identity.
 
+## Modes (research vs execution)
+
+- **Research / discovery mode:** exploratory work where unknowns are being surfaced. Output is findings, ADR drafts, spike results — labelled as such and not submitted as finished work. Governed by the lean principles Create Knowledge and Defer Commitment.
+- **Execution mode:** defined work where expectations are declared and tests exist. Output is code, infrastructure, released artifacts. Held to the triad: docs declared it, tests verify it, code delivers it. Governed by Build Quality In and Deliver Fast.
+
+The lab enforces this distinction structurally: undeclared docs and missing tests mean you are in research mode regardless of how much code exists. Maturity promotion is the commitment gate. See [LEAN_FOUNDATIONS.md](LEAN_FOUNDATIONS.md) for the full principle mapping and two-mode model.
+
 ## Change history
 
 | Date | Change summary | Editor |
 |---|---|---|
 | 2026-03-26 | Moved to taxonomy path and standardized metadata. | Jason Cheroske |
+| 2026-04-05 | Added Modes section (research vs execution); LEAN_FOUNDATIONS.md related path. | — |
 | 2026-03-27 | Added plant, plan, sprout, seed, meta-lab; lab-as-workspace; irreversibility; decorator-like framing. | Jason Cheroske |

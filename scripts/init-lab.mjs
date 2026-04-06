@@ -23,9 +23,14 @@ copyDirectory(path.join(templateRoot, "lab"), path.join(targetDir, knowledgeDir)
 copyDirectory(path.join(templateRoot, "docs"), path.join(targetDir, "docs"), force);
 copyDirectory(path.join(templateRoot, "root"), targetDir, force);
 
+const aiTemplate = path.join(templateRoot, ".ai");
+if (fileExists(aiTemplate)) {
+  copyDirectory(aiTemplate, path.join(targetDir, ".ai"), force);
+}
+
 const targetLabYaml = path.join(targetDir, "lab.yaml");
 if (force || !fileExists(targetLabYaml)) {
   fs.copyFileSync(path.join(templateRoot, "lab.yaml"), targetLabYaml);
 }
 
-console.log(`Lab initialized at: ${targetDir} (knowledge: ${knowledgeDir}/)`);
+console.log(`Lab initialized at: ${targetDir} (knowledge: ${knowledgeDir}/, ai: .ai/)`);
