@@ -5,7 +5,7 @@ updated: 2026-03-31
 
 # Lab workspace
 
-This folder is a **Lab OS** workspace: governed intent, reality, gaps, behavior, and evidence live under `lab/`, with optional navigation in `docs/`. Validation checks only `lab.yaml` and the required `lab/*` artifacts (see the Lab OS contract).
+This folder is a **Lab OS** workspace: governed intent, reality, gaps, behavior, and evidence live under **`lab/`** or **`.lab/`** (same subtree; pick one—see Lab OS `LAB_CONTRACT`), with optional navigation in `docs/`. Validation checks only `lab.yaml` and the required knowledge-layer artifacts.
 
 ## Start here (short arc)
 

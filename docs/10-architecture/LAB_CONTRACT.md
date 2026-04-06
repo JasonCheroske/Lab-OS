@@ -14,11 +14,12 @@ updated: 2026-03-31
 ## Required artifacts
 
 - `lab.yaml`
-- `lab/intent/ARCHITECTURE_TARGET.md`
-- `lab/reality/IMPLEMENTATION_MAP.md`
-- `lab/delta/GAP_MAP.md`
-- `lab/behavior/GOVERNANCE_POLICY.md`
-- `lab/evidence/READINESS_CHECKS.md`
+- Knowledge layer at **either** repo-root `lab/` **or** `.lab/` (same subtree below that root):
+  - `intent/ARCHITECTURE_TARGET.md`
+  - `reality/IMPLEMENTATION_MAP.md`
+  - `delta/GAP_MAP.md`
+  - `behavior/GOVERNANCE_POLICY.md`
+  - `evidence/READINESS_CHECKS.md`
 
 ## Required behaviors
 
@@ -42,6 +43,7 @@ Initialized seeds copy these from the template (via `template/root/` and `templa
 
 | Date       | Change summary                                   | Major structural change | Editor         |
 | ---------- | ------------------------------------------------ | ----------------------- | -------------- |
+| 2026-04-04 | Knowledge layer may be `lab/` or `.lab/` at repo root (same subtree); validation updated. | no                      | —              |
 | 2026-03-27 | Documented optional root `README.md`, `AGENTS.md`, and `docs/*` companions; validation unchanged. | no                      | Jason Cheroske |
 | 2026-03-26 | Migrated into taxonomy with governance metadata. | yes                     | Jason Cheroske |
 

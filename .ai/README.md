@@ -1,0 +1,1 @@
+# Currenly Placeholder READ for AI workspace Confifgurable Such as skills, and rules.

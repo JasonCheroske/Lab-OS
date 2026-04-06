@@ -27,6 +27,15 @@ test("validate passes for generated lab", () => {
   assert.match(output, /Validation passed/);
 });
 
+test("init with .lab and validate passes", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-dotlab-"));
+  runNode(["scripts/init-lab.mjs", "--target", tmpDir, "--knowledge-dir", ".lab"]);
+  assert.ok(fs.existsSync(path.join(tmpDir, ".lab", "intent", "ARCHITECTURE_TARGET.md")));
+  assert.ok(!fs.existsSync(path.join(tmpDir, "lab")));
+  const output = runNode(["scripts/validate-lab.mjs", "--target", tmpDir]);
+  assert.match(output, /Validation passed/);
+});
+
 test("promote upgrades maturity stage", () => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-promote-"));
   runNode(["scripts/init-lab.mjs", "--target", tmpDir]);
