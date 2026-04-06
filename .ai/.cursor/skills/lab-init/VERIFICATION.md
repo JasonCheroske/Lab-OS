@@ -1,6 +1,6 @@
 ---
-created: 2026-03-31
-updated: 2026-03-27
+created: 2026-04-05
+updated: 2026-04-06
 ---
 
 # Lab-init verification (prompt-level)

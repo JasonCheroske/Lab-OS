@@ -6,8 +6,8 @@ description: >-
   /flow-diagram or /flow-driagram (typo), asks for an architecture flowchart, system map, lab
   diagram refresh, gitdiagram-style diagram, Mermaid flowchart update, or keeping the canonical
   diagram in sync with the codebase.
-created: 2026-03-31
-updated: 2026-03-31
+created: 2026-04-06
+updated: 2026-04-06
 ---
 
 # Flow diagram (`/flow-diagram`)

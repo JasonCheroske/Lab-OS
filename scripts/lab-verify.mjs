@@ -25,6 +25,7 @@ if (testFiles.length === 0) {
 }
 run("Run unit/integration tests", ["--test", ...testFiles]);
 run("Check documentation links", ["scripts/check-doc-links.mjs"]);
+run("Check markdown frontmatter dates", ["scripts/add-md-frontmatter.mjs", "--check"]);
 run("Validate minimal example", ["scripts/validate-lab.mjs", "--target", "examples/minimal-lab"]);
 run("Validate hybrid governance example", ["scripts/validate-lab.mjs", "--target", "examples/hybrid-governance-lab"]);
 

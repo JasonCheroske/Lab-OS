@@ -50,6 +50,7 @@
     "lab:init": "node scripts/lab-init.mjs",
     "lab:verify": "node scripts/lab-verify.mjs",
     "docs:check-links": "node scripts/check-doc-links.mjs",
+    "docs:check-frontmatter": "node scripts/add-md-frontmatter.mjs --check",
     "lab:tar": "node scripts/build-lab-tar.mjs"
   },
   "dependencies": {

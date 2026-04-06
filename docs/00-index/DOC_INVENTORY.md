@@ -1,6 +1,6 @@
 ---
 created: 2026-03-31
-updated: 2026-03-31
+updated: 2026-04-06
 ---
 
 # Documentation Inventory and Classification
@@ -31,4 +31,4 @@ This inventory maps existing documents into the canonical taxonomy for `lab-os-l
 - Taxonomy is strict by default but can be adapted to project needs.
 - Structural documents require change history entries on each update.
 - Major structural changes require sign-off entries.
-- Every Markdown file must include YAML **`created`** / **`updated`** frontmatter per [DOC_GOVERNANCE.md](DOC_GOVERNANCE.md); refresh dates with `node scripts/add-md-frontmatter.mjs` after bulk moves (optional `--force` to recompute from git).
+- Every Markdown file must include YAML **`created`** / **`updated`** frontmatter per [DOC_GOVERNANCE.md](DOC_GOVERNANCE.md); **`created` ≤ `updated`** always. Refresh with `node scripts/add-md-frontmatter.mjs` after bulk moves; use **`--force`** to recompute from git, **`--fix-order`** to fix inverted ISO pairs without git, and **`--check`** / **`npm run docs:check-frontmatter`** (also run from [`lab:verify`](../../scripts/lab-verify.mjs)) to fail CI if ordering is wrong.

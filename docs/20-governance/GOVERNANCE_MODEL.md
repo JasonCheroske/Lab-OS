@@ -1,6 +1,6 @@
 ---
 created: 2026-03-31
-updated: 2026-03-27
+updated: 2026-04-06
 ---
 
 # Governance Model

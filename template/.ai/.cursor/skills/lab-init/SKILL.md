@@ -1,4 +1,9 @@
 ---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
+---
 name: lab-init
 description: >-
   Runs a conversation-first design and tailoring workflow for any project shape (single or multi-service, mixed stacks, infra), then optionally produces a paste-ready sprout handoff for the target folder. Use when the user says /lab-init or asks to bootstrap, initialize, design, or tailor a lab or project before scaffolding.

@@ -1,4 +1,9 @@
 ---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
+---
 name: harness-fetch
 description: >-
   Guides a user through fetching and setting up their chosen AI harness config from .ai/.<harness>/ into their local working environment. Use when the user says /harness-fetch, asks how to set up Cursor, Claude, or another harness for this lab, or wants to pull pre-built harness config without committing personal artifacts.
