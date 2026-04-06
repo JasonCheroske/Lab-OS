@@ -1,3 +1,8 @@
+---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
 # Lab OS
 
 Lab OS is the canonical GitHub seed for AI-native engineering environments.
@@ -8,7 +13,13 @@ It extends normal CI/CD and Agile delivery with:
 - durable knowledge graph conventions
 - reproducible lab scaffolding for teams using different AI systems
 
-This repository is released as a source seed first. Package-manager distribution is intentionally deferred to a later phase.
+This repository is released as a **GitHub source seed** and as an **npm package** (`lab-os`). The initialized lab tarball remains the primary artifact for teams that want a copy-paste bundle without installing from a registry.
+
+## Concept: lab, meta-lab, plant, plan, sprout
+
+A **lab** is your **workspace**: the governed environment that wraps experiments, delivery, and how you work with AI—not only a folder of files, but intent, evidence, and rules bound to a root. **Plant** the seed at that root (tarball, `init`, or toolkit); **plan** with your AI (structure, diagrams, unknowns) before you build; then **sprout** so the lab pattern binds to the folder and becomes how you operate. Sprouting is **practically irreversible** (no automated un-sprout—restructure manually if needed). Sprouting **wraps** the project with that layer the way a **decorator** wraps behavior: additive governance and clarity without dictating one app stack.
+
+This repository (**lab-os-lab**) is both the **tooling** that ships seeds and a **meta-lab**: an exemplar of the same ideas while authoring releases. Canonical terms: [docs/60-reference/FOUNDATIONS_VOCABULARY.md](docs/60-reference/FOUNDATIONS_VOCABULARY.md). Adoption path: [docs/30-runbooks/ADOPTION_GUIDE.md](docs/30-runbooks/ADOPTION_GUIDE.md).
 
 ## Prerequisites
 
@@ -22,29 +33,53 @@ lab-os-lab/
   docs/
   schema/
   template/
+    docs/          # optional companion stubs copied into initialized labs (see LAB_CONTRACT)
+    root/          # README.md + AGENTS.md merged to target root on init (optional companions)
+    .ai/           # harness namespace (skills, rules, .cursor/) copied into initialized labs
   scripts/
   examples/
   tests/
 ```
+
+When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/root/`), **`docs/README.md`** and **`docs/project-structure.md`**, and **`.ai/`** (harness namespace), as recommended companions to `lab/*`; they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
+
+## npm package
+
+Install the toolkit from the public registry and use the `lab-os` CLI (same behavior as the npm scripts):
+
+```bash
+npm install -g lab-os
+lab-os lab-init ./.tmp/quickstart-lab
+lab-os lab-verify
+```
+
+Or run without a global install:
+
+```bash
+npx lab-os@latest init ./my-lab
+npx lab-os@latest validate --target ./my-lab
+```
+
+Publishing, semver policy, and registry governance are documented under `docs/40-release/` (see `NPM_REGISTRY_GOVERNANCE.md`, `SEMVER_POLICY.md`) and ADR `docs/50-adr/ADR-0001-package-boundaries-and-npm-distribution.md`.
 
 ## Start here: initialized lab tarball (primary release path)
 
 Create the release artifact:
 
 ```bash
-npm run lab:tar -- v0.1.0
+npm run lab:tar -- v0.2.0
 ```
 
 This creates:
 
-- `.tmp/release-artifacts/lab-starter-v0.1.0.tar.gz`
-- `.tmp/release-artifacts/lab-starter-v0.1.0.tar.gz.sha256`
+- `.tmp/release-artifacts/lab-starter-v0.2.0.tar.gz`
+- `.tmp/release-artifacts/lab-starter-v0.2.0.tar.gz.sha256`
 
 End-user setup from tarball:
 
 ```bash
-tar -xzf lab-starter-v0.1.0.tar.gz
-cd lab-starter-v0.1.0
+tar -xzf lab-starter-v0.2.0.tar.gz
+cd lab-starter-v0.2.0
 npm run validate -- --target .
 npm run promote -- --target . --to poc
 ```
@@ -75,7 +110,7 @@ npm run lab:verify
 
 ## Cursor shortcut (optional)
 
-Use `/lab-init` in Cursor to run the same bootstrap workflow. Cursor is optional; all setup and verification paths above work without Cursor.
+Use `/lab-init` in Cursor to run the **conversation-first** workflow: design and tailor a project (ASCII tree, Mermaid, sprout handoff) before any scaffolding; optional **sprout** includes Lab OS seed commands when you choose that mode. See `.cursor/skills/lab-init/SKILL.md`. All npm paths above work without Cursor.
 
 ## Expected command output
 
@@ -99,10 +134,10 @@ Promotion checks should run against a temporary target to avoid mutating checked
 
 ## Release model
 
-- Phase 1: GitHub release with initialized lab tarball as primary user artifact
-- Phase 2: package-manager release strategy (npm and others)
+- **GitHub:** source release, GitHub Releases, initialized lab tarball (optional primary for air-gapped or non-registry workflows).
+- **npm:** public package [`lab-os`](https://www.npmjs.com/package/lab-os) from tag `v*.*.*` (see `docs/40-release/NPM_REGISTRY_GOVERNANCE.md`, CI workflows `npm-dry-run` / `npm-publish`).
 
-See `docs/40-release/MIGRATION_CHECKLIST.md` for release sequencing and `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` for deferred package work.
+See `docs/40-release/MIGRATION_CHECKLIST.md` for release sequencing and `docs/90-backlog/PHASE2_PACKAGE_MANAGER_BACKLOG.md` for package-manager history and status.
 
 ## Troubleshooting
 

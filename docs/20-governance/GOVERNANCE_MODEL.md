@@ -1,3 +1,8 @@
+---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
 # Governance Model
 
 **Intent:** Define the approval model, role structure, and override posture for project governance.
@@ -40,6 +45,6 @@ Default mode is `hybrid`:
 
 | Date       | Change reference        | Approver (human) | Role            | Decision       |
 | ---------- | ----------------------- | ---------------- | --------------- | -------------- |
-| 2026-03-26 | docs taxonomy migration | Jason Cheroske   | senior_engineer | Jason Cheroske |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske   | senior_engineer | approved       |
 
 

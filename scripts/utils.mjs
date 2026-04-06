@@ -29,6 +29,26 @@ export function fileExists(filePath) {
   return fs.existsSync(filePath);
 }
 
+/**
+ * Lab OS knowledge layer may live at repo-root `lab/` (default seed) or `.lab/` (dot-dir, metadata-style).
+ * Returns { root: "lab" | ".lab" } or { error: string } if missing or ambiguous.
+ */
+export function resolveKnowledgeRootDir(targetDir) {
+  const dotMarker = path.join(targetDir, ".lab", "intent", "ARCHITECTURE_TARGET.md");
+  const labMarker = path.join(targetDir, "lab", "intent", "ARCHITECTURE_TARGET.md");
+  const hasDot = fileExists(dotMarker);
+  const hasLab = fileExists(labMarker);
+  if (hasDot && hasLab) {
+    return { error: "Ambiguous knowledge layer: both lab/ and .lab/ are present; remove one." };
+  }
+  if (hasDot) return { root: ".lab" };
+  if (hasLab) return { root: "lab" };
+  return {
+    error:
+      "Missing knowledge layer: expected lab/intent/ARCHITECTURE_TARGET.md or .lab/intent/ARCHITECTURE_TARGET.md"
+  };
+}
+
 export function copyDirectory(sourceDir, targetDir, force = false) {
   ensureDir(targetDir);
   const entries = fs.readdirSync(sourceDir, { withFileTypes: true });

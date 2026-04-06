@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { parseArgs, readYamlFile, resolveTarget, writeYamlFile } from "./utils.mjs";
+import { parseArgs, readYamlFile, resolveKnowledgeRootDir, resolveTarget, writeYamlFile } from "./utils.mjs";
 
 const args = parseArgs(process.argv);
 const targetDir = resolveTarget(args.target || args._[0]);
@@ -31,7 +31,9 @@ if (targetIndex <= currentIndex) {
   fail(`Target stage must be higher than current stage (${config.maturityStage})`);
 }
 
-const gapMap = fs.readFileSync(path.join(targetDir, "lab", "delta", "GAP_MAP.md"), "utf8");
+const knowledge = resolveKnowledgeRootDir(targetDir);
+if (knowledge.error) fail(knowledge.error);
+const gapMap = fs.readFileSync(path.join(targetDir, knowledge.root, "delta", "GAP_MAP.md"), "utf8");
 if (targetIndex >= validStages.indexOf("pilot") && /high/i.test(gapMap)) {
   fail("Unresolved high-severity delta found in GAP_MAP.md");
 }

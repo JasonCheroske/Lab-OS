@@ -9,3 +9,9 @@ Thumbs.db
 .idea/
 *.swp
 *.tmp
+
+# Personal harness config (API keys, session state, individual preferences)
+# .ai/ is committed; personal config at the repo root is not.
+.cursor/settings.json
+.cursor/chat/
+.claude/

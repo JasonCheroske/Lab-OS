@@ -1,3 +1,8 @@
+---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
 # Maturity Model
 
 **Intent:** Define the progression stages and promotion requirements for labs.
@@ -29,4 +34,4 @@
 
 | Date | Change reference | Approver (human) | Role | Decision |
 |---|---|---|---|---|
-| 2026-03-26 | docs taxonomy migration | pending | senior_engineer | pending |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | approved |

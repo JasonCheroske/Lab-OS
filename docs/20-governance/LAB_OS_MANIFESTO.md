@@ -1,3 +1,8 @@
+---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
 # LAB OS Manifesto
 
 **Intent:** Capture the core principles that guide how the lab system is designed and operated.
@@ -28,4 +33,4 @@ Provide a portable operating model for AI-native engineering laboratories.
 
 | Date | Change reference | Approver (human) | Role | Decision |
 |---|---|---|---|---|
-| 2026-03-26 | docs taxonomy migration | pending | senior_engineer | pending |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | approved |

@@ -1,3 +1,13 @@
+---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
+---
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+---
+
 # <Document Title>
 
 **Intent:** <why this structural document exists>
@@ -6,7 +16,7 @@
 
 **Last reviewed:** YYYY-MM-DD - <summary>
 
----
+***
 
 ## Context
 
@@ -20,7 +30,7 @@
 
 <constraints, assumptions, dependencies>
 
----
+***
 
 ## Change history
 

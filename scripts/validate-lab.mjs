@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
-import { fileExists, parseArgs, readYamlFile, resolveTarget } from "./utils.mjs";
+import { fileExists, parseArgs, readYamlFile, resolveKnowledgeRootDir, resolveTarget } from "./utils.mjs";
 
 const args = parseArgs(process.argv);
 const targetDir = resolveTarget(args.target || args._[0]);
@@ -12,12 +12,12 @@ const projectRoot = path.resolve(scriptDir, "..");
 const schemaPath = path.join(projectRoot, "schema", "lab.schema.json");
 const labYamlPath = path.join(targetDir, "lab.yaml");
 
-const requiredFiles = [
-  "lab/intent/ARCHITECTURE_TARGET.md",
-  "lab/reality/IMPLEMENTATION_MAP.md",
-  "lab/delta/GAP_MAP.md",
-  "lab/behavior/GOVERNANCE_POLICY.md",
-  "lab/evidence/READINESS_CHECKS.md"
+const requiredKnowledgeSuffixes = [
+  "intent/ARCHITECTURE_TARGET.md",
+  "reality/IMPLEMENTATION_MAP.md",
+  "delta/GAP_MAP.md",
+  "behavior/GOVERNANCE_POLICY.md",
+  "evidence/READINESS_CHECKS.md"
 ];
 
 function fail(message) {
@@ -36,7 +36,12 @@ if (!validate(data)) {
   fail(`Schema mismatch: ${details}`);
 }
 
-for (const rel of requiredFiles) {
+const knowledge = resolveKnowledgeRootDir(targetDir);
+if (knowledge.error) fail(knowledge.error);
+const knowledgeRoot = knowledge.root;
+
+for (const suffix of requiredKnowledgeSuffixes) {
+  const rel = path.join(knowledgeRoot, suffix);
   if (!fileExists(path.join(targetDir, rel))) fail(`Missing required artifact: ${rel}`);
 }
 
@@ -47,4 +52,15 @@ for (const type of ["architecture", "public_interface", "security_critical"]) {
   }
 }
 
-console.log(`Validation passed for: ${targetDir}`);
+if (data?.clouds) {
+  for (const [cloud, entry] of Object.entries(data.clouds)) {
+    if (entry.bootstrapRequired) {
+      const bootstrapDir = path.join(targetDir, "environments", "_bootstrap", cloud);
+      if (!fileExists(bootstrapDir)) {
+        fail(`clouds.${cloud}.bootstrapRequired is true but environments/_bootstrap/${cloud}/ does not exist`);
+      }
+    }
+  }
+}
+
+console.log(`Validation passed for: ${targetDir} (knowledge: ${knowledgeRoot}/)`);

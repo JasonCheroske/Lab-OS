@@ -1,3 +1,8 @@
+---
+created: 2026-04-06
+updated: 2026-04-06
+---
+
 # Knowledge Graph Model
 
 **Intent:** Define the canonical lifecycle and node fields used for durable project knowledge.
@@ -32,6 +37,6 @@
 
 | Date       | Change reference        | Approver       | Role            | Decision       |
 | ---------- | ----------------------- | -------------- | --------------- | -------------- |
-| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | Jason Cheroske |
+| 2026-03-26 | docs taxonomy migration | Jason Cheroske | senior_engineer | approved |
 
 
