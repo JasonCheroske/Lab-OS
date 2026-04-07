@@ -13,6 +13,12 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-04-06
+
+### Fixed
+
+- **`lab-os` CLI cwd:** `npx lab-os` and global installs now run child scripts with the caller’s current working directory, so paths like `lab-os init ./my-lab` create `my-lab` under the directory where you ran the command (not under `node_modules/lab-os`). Script entrypoints are resolved with absolute paths from the package root.
+
 ## [0.2.0] - 2026-04-06
 
 ### Added
@@ -42,6 +48,7 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 - Initial public seed release (`v0.1.0`): scaffold, validation, promotion, tarball artifact, and runbooks.
 
-[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.1
 [0.2.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.0
 [0.1.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.1.0

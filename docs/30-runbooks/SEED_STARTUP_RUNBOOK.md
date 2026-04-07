@@ -82,7 +82,7 @@ npm run validate -- --target <your-root>
 npm run promote -- --target <your-root> --to <stage>
 ```
 
-Using the **`lab-os`** CLI:
+Using the **`lab-os`** CLI (`npx` or global): paths you pass are resolved from **the directory where you run the command** (not from inside `node_modules`).
 
 ```bash
 npx lab-os@latest validate --target <your-root>

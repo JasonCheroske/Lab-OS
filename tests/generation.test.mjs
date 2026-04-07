@@ -62,3 +62,16 @@ test("init creates .ai workspace with harness namespace structure", () => {
   assert.ok(fs.existsSync(path.join(tmpDir, ".ai", ".cursor", "skills", "lab-init", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(tmpDir, ".ai", ".cursor", "rules", "lab-init-default.mdc")));
 });
+
+test("lab-os CLI resolves init target from caller cwd (npx / global)", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-cli-cwd-"));
+  const binPath = path.join(projectRoot, "bin", "lab-os.mjs");
+  const out = execFileSync(process.execPath, [binPath, "init", "cli-cwd-smoke"], {
+    cwd: tmpDir,
+    encoding: "utf8",
+  });
+  const labRoot = path.join(tmpDir, "cli-cwd-smoke");
+  assert.match(out, /Lab initialized at:/);
+  assert.ok(out.includes("cli-cwd-smoke"));
+  assert.ok(fs.existsSync(path.join(labRoot, "lab.yaml")));
+});

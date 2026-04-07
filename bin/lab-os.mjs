@@ -68,5 +68,6 @@ if (!script) {
   process.exit(1);
 }
 
-const r = spawnSync(node, [...script, ...rest], { cwd: projectRoot, stdio: "inherit" });
+const scriptAbs = script.map((rel) => path.join(projectRoot, rel));
+const r = spawnSync(node, [...scriptAbs, ...rest], { cwd: process.cwd(), stdio: "inherit" });
 process.exit(r.status ?? 1);

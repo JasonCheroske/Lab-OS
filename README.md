@@ -60,6 +60,8 @@ npx lab-os@latest init ./my-lab
 npx lab-os@latest validate --target ./my-lab
 ```
 
+Relative targets (for example `./my-lab`) are resolved from **your shell’s current directory**, not from the installed package path under `node_modules`.
+
 Publishing, semver policy, and registry governance are documented under `docs/40-release/` (see `NPM_REGISTRY_GOVERNANCE.md`, `SEMVER_POLICY.md`) and ADR `docs/50-adr/ADR-0001-package-boundaries-and-npm-distribution.md`.
 
 ## Start here: initialized lab tarball (primary release path)

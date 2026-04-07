@@ -29,7 +29,7 @@ updated: 2026-04-06
 - [ ] `npm run lab:verify` passes
 - [ ] `npm publish --dry-run` passes (CI: `npm-dry-run` workflow)
 - [ ] After tag push and approval: `npm view lab-os version` shows `0.2.0`
-- [ ] Smoke: `npx lab-os@latest init --target ./.tmp/npm-smoke-<id>` produces `.ai/` paths
+- [ ] Smoke: `npx lab-os@latest init ./.tmp/npm-smoke-<id>` (or `--target ./.tmp/npm-smoke-<id>`) from an empty parent folder produces `.ai/` paths **under that parent** (not under `node_modules/lab-os`); use **lab-os ≥ 0.2.1** for correct cwd behavior with positional paths.
 
 ## Notes
 
