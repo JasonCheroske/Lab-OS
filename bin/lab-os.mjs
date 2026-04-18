@@ -11,6 +11,7 @@ const [, , cmd, ...rest] = process.argv;
 
 const map = {
   init: ["scripts/init-lab.mjs"],
+  create: ["scripts/create-lab.mjs"],
   validate: ["scripts/validate-lab.mjs"],
   promote: ["scripts/promote-stage.mjs"],
   "lab-init": ["scripts/lab-init.mjs"],
@@ -25,8 +26,8 @@ Usage:
   lab-os <command> [args...]
 
 Commands:
-  init <dir>        Initialize lab scaffold (agnostic template)
-  create            [phase 2] Interactive three-option lab creator (agnostic / product-starter / meta)
+  init <dir>        Initialize lab scaffold (--template defaults to agnostic)
+  create            Interactive archetype picker (agnostic / product-starter / meta); use --yes for CI
   validate          Validate a lab (use --target or positional path)
   promote           Promote stage (use --target and --to)
   lab-init [dir]    Full lab:init pipeline (init, validate, promote to poc)
@@ -35,6 +36,7 @@ Commands:
 
 Examples:
   lab-os init ./my-lab
+  lab-os create --template agnostic --target ./my-lab --yes
   lab-os validate --target ./my-lab
   lab-os promote --target ./my-lab --to poc
 `);
@@ -43,22 +45,6 @@ Examples:
 if (!cmd || cmd === "help" || cmd === "-h" || cmd === "--help") {
   help();
   process.exit(cmd ? 0 : 1);
-}
-
-if (cmd === "create") {
-  console.log(`lab-os create — three-option lab creator (phase 2, not yet implemented)
-
-When implemented, this command will offer:
-  1) agnostic       Clean foundation for immediate sculpting and use
-  2) product-starter Opinionated domain starter (docs → tests → code triad)
-  3) meta           Full Lab OS meta-workshop for building labs
-
-For now, use:
-  lab-os init --target <dir>    Initializes the agnostic (default) template
-
-See ADR-0003: docs/50-adr/ADR-0003-npm-create-three-options.md
-`);
-  process.exit(0);
 }
 
 const script = map[cmd];

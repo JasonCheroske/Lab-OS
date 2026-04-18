@@ -1,0 +1,31 @@
+# Install: pip install pre-commit && pre-commit install
+# Aligns with lab.yaml requiredChecks and .lab/behavior/CICD_CONTRACT.md.
+
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.96.1
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+        args:
+          - --hook-config=--retry-once-with-cleanup=true
+      - id: terraform_tflint
+        args:
+          - --args=--call-module-type=all
+      - id: terraform_docs
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--create-file-if-not-exist=true
+
+  - repo: https://github.com/bridgecrewio/checkov
+    rev: 3.2.382
+    hooks:
+      - id: checkov
+        name: checkov terraform
+        files: \.tf$
+        exclude: (^|/)\.terraform/
+        args:
+          - --framework
+          - terraform
+          - --config-file
+          - tests/checkov/baseline.checkov.yaml

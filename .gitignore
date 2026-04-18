@@ -1,5 +1,8 @@
 node_modules/
 .tmp/
+
+# Terraform — never commit provider caches (templates may run terraform init locally)
+**/.terraform/
 coverage/
 dist/
 *.log

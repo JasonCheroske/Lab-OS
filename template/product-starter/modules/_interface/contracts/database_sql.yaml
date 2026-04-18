@@ -1,0 +1,23 @@
+domain: database_sql
+description: >
+  Relational database (RDS / Azure Database Flexible Server / Cloud SQL).
+  Every implementation must expose these exact output keys.
+required_variables:
+  - vpc_id
+  - db_subnet_ids
+  - allowed_cidr_blocks
+  - instance_class
+  - db_username
+  - db_password
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: db_endpoint
+    hint: "Database hostname or private IP address"
+  - key: db_port
+    type: number
+    hint: "Database port (5432 for PostgreSQL, 3306 for MySQL)"
+  - key: db_identifier
+    hint: "Cloud-native instance identifier: RDS identifier for AWS, server name for Azure, connection_name for GCP"

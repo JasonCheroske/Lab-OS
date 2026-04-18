@@ -1,0 +1,76 @@
+version: "3.9"
+
+# Google official emulators + fake-gcs-server for GCP services.
+# Covers: Pub/Sub, Firestore (native mode), Cloud Storage (via fake-gcs-server)
+# Does NOT cover: GKE, Cloud SQL, Cloud Functions, Artifact Registry, Cloud DNS, Cloud CDN, Secret Manager
+#
+# See tests/README.md for the full emulator coverage matrix.
+
+services:
+  pubsub:
+    image: gcr.io/google.com/cloudsdktool/google-cloud-cli:emulators
+    container_name: gcp-pubsub
+    hostname: gcp-pubsub
+    restart: unless-stopped
+    entrypoint:
+      - gcloud
+      - beta
+      - emulators
+      - pubsub
+      - start
+      - --host-port=0.0.0.0:8085
+      - --project=test-project
+    ports:
+      - "8085:8085"
+    environment:
+      PUBSUB_EMULATOR_HOST: "0.0.0.0:8085"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8085"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  firestore:
+    image: gcr.io/google.com/cloudsdktool/google-cloud-cli:emulators
+    container_name: gcp-firestore
+    hostname: gcp-firestore
+    restart: unless-stopped
+    entrypoint:
+      - gcloud
+      - emulators
+      - firestore
+      - start
+      - --host-port=0.0.0.0:8080
+      - --project=test-project
+    ports:
+      - "8080:8080"
+    environment:
+      FIRESTORE_EMULATOR_HOST: "0.0.0.0:8080"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # fake-gcs-server: community emulator for Google Cloud Storage.
+  # Used by Google itself in its own CI (github.com/fsouza/fake-gcs-server).
+  # Set STORAGE_EMULATOR_HOST=http://localhost:4443 before running terraform.
+  fake-gcs:
+    image: fsouza/fake-gcs-server:latest
+    container_name: gcp-fake-gcs
+    hostname: fake-gcs
+    restart: unless-stopped
+    ports:
+      - "4443:4443"
+    command:
+      - -scheme
+      - http
+      - -port
+      - "4443"
+      - -public-host
+      - "localhost:4443"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4443/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

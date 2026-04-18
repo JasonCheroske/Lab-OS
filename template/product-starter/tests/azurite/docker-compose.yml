@@ -1,0 +1,78 @@
+version: "3.9"
+
+# Azure emulators for local development.
+# Service Bus Emulator: Microsoft official (2024) — covers Service Bus queues with dead-letter.
+#   Connection string: Endpoint=sb://localhost;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE=;UseDevelopmentEmulator=true
+# Azurite: Azure Storage — covers Blob, Queue, Table storage.
+#   Connection string: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://localhost:10000/devstoreaccount1;QueueEndpoint=http://localhost:10001/devstoreaccount1;TableEndpoint=http://localhost:10002/devstoreaccount1;
+#
+# Does NOT cover: AKS, PostgreSQL Flexible Server, Key Vault, ACR, Azure DNS, CDN
+#
+# See tests/README.md for the full emulator coverage matrix.
+
+services:
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: azurite
+    hostname: azurite
+    restart: unless-stopped
+    ports:
+      - "10000:10000"  # Blob Storage
+      - "10001:10001"  # Queue Storage
+      - "10002:10002"  # Table Storage
+    command:
+      - azurite
+      - --blobHost
+      - "0.0.0.0"
+      - --queueHost
+      - "0.0.0.0"
+      - --tableHost
+      - "0.0.0.0"
+      - --loose           # Allow unknown headers (Terraform Azure provider quirks)
+    volumes:
+      - azurite_data:/data
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "10000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Azure Service Bus Emulator — Microsoft official (released 2024).
+  # Requires a companion SQL Server container for state persistence (Microsoft's design).
+  servicebus-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: azure-servicebus-db
+    hostname: servicebus-db
+    restart: unless-stopped
+    environment:
+      SA_PASSWORD: "ServiceBus!Emulator1"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P ServiceBus!Emulator1 -Q 'SELECT 1' || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  servicebus:
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    container_name: azure-servicebus
+    hostname: servicebus
+    restart: unless-stopped
+    depends_on:
+      servicebus-db:
+        condition: service_healthy
+    ports:
+      - "5672:5672"   # AMQP
+    environment:
+      SQL_SERVER: "servicebus-db"
+      MSSQL_SA_PASSWORD: "ServiceBus!Emulator1"
+      ACCEPT_EULA: "Y"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5672"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+volumes:
+  azurite_data:

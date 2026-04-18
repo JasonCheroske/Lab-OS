@@ -1,0 +1,2 @@
+# Terraform local provider cache — must not ship in npm tarball (hundreds of MB per tree)
+**/.terraform/

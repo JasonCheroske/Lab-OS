@@ -27,6 +27,7 @@ jobs:
 
       - run: npm ci
 
+      # NPM_TOKEN: granular token with Publish + “Bypass 2FA”. Without bypass, npm returns EOTP (no --otp in CI).
       - name: Publish to npm
         run: npm publish --provenance --access public
         env:

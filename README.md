@@ -41,9 +41,11 @@ lab-os-lab/
   tests/
 ```
 
-When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/root/`), **`docs/README.md`** and **`docs/project-structure.md`**, and **`.ai/`** (harness namespace), as recommended companions to `lab/*`; they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
+When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/agnostic/root/` by default), **`docs/README.md`** and **`docs/project-structure.md`**, and **`.ai/`** (harness namespace), as recommended companions to `lab/*`; they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Other archetypes use `template/product-starter/` or `template/meta/` via `--template` or `lab-os create`. Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
 
 ## npm package
+
+The registry ships **one** package, **`lab-os`**, with the full CLI (including `create` for archetype selection). There is no separate initializer package—use `npx lab-os@latest …` or install globally as below.
 
 Install the toolkit from the public registry and use the `lab-os` CLI (same behavior as the npm scripts):
 
@@ -57,8 +59,11 @@ Or run without a global install:
 
 ```bash
 npx lab-os@latest init ./my-lab
+npx lab-os@latest create --yes --template agnostic --target ./my-lab
 npx lab-os@latest validate --target ./my-lab
 ```
+
+Run `npx lab-os@latest create` with no flags for an interactive archetype picker (agnostic, product-starter, or meta). In CI or scripts, pass `--yes` together with `--template` and `--target`, or set `LAB_OS_CREATE_NONINTERACTIVE=1`.
 
 Relative targets (for example `./my-lab`) are resolved from **your shell’s current directory**, not from the installed package path under `node_modules`.
 

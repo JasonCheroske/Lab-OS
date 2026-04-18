@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-17
 ---
 
 # ADR-0002: `.ai/` harness namespace, seed symmetry, and fork model
@@ -43,7 +43,7 @@ If a harness consistently makes a domain-specific error in the lab's context, th
 
 - **`lab-os-lab/.ai/`** is the canonical live working copy—edited in place as Lab OS evolves.
 - **`template/.ai/`** is the snapshot that ships in `init` output; it is synced from `lab-os-lab/.ai/` as a release step (see [RELEASE_RUNBOOK.md](../30-runbooks/RELEASE_RUNBOOK.md)).
-- **`init-lab.mjs`** copies `template/.ai/` to the target root alongside `lab/`, `docs/`, and root files.
+- **`init-lab.mjs`** copies `template/<archetype>/.ai/` (default archetype: `agnostic`) to the target root alongside `lab/`, `docs/`, and root files.
 - **`package.json` `files`** already globs `template/`—no additional configuration required.
 
 ### 5. Seed = agnostic foundation, not the Lab OS development archive

@@ -1,0 +1,15 @@
+domain: monitoring
+description: >
+  Log group / workspace and basic metric alerting.
+required_variables:
+  - log_retention_days
+  - alarm_email
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: log_group_name
+    hint: "Log group / workspace name"
+  - key: log_group_arn
+    hint: "Cloud-native unique identifier for the log group"

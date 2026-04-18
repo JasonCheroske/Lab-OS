@@ -1,0 +1,17 @@
+domain: compute
+description: >
+  Virtual machine / instance group with autoscaling.
+required_variables:
+  - instance_type
+  - vpc_id
+  - subnet_ids
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: instance_ids
+    type: list
+    hint: "List of instance / VM IDs"
+  - key: autoscaling_group_name
+    hint: "Autoscaling group / scale set name"

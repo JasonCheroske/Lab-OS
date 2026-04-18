@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-17
 ---
 
 # Product lab filter runbook
@@ -20,7 +20,7 @@ A **product lab** is a workspace that has almost irreversibly bloomed: it is emb
 - Gitignored harness config that was never meant to be shared
 - "Bad habits" accumulated from the project's specific path that would not be desirable in a blank-slate template
 
-Before such a lab can serve as a **product-starter archetype** (one of the three `npm create lab-os` options), it must pass a deliberate filter. The goal is not to sanitize the lab of all personality—the starter's **workflow and policies** are what make it valuable—but to remove artifacts that are personal, non-transferable, or inadvertently project-specific.
+Before such a lab can serve as a **product-starter archetype** (one of the three `lab-os create` options), it must pass a deliberate filter. The goal is not to sanitize the lab of all personality—the starter's **workflow and policies** are what make it valuable—but to remove artifacts that are personal, non-transferable, or inadvertently project-specific.
 
 ## When to run this checklist
 

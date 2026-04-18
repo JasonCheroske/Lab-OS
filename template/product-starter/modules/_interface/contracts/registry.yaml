@@ -1,0 +1,13 @@
+domain: registry
+description: >
+  Container image registry (ECR / ACR / Artifact Registry).
+required_variables:
+  - name
+  - scan_on_push
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: registry_url
+    hint: "Registry push/pull URL (without trailing slash); format is cloud-native"

@@ -1,0 +1,15 @@
+domain: serverless
+description: >
+  Function-as-a-service (Lambda / Azure Functions / Cloud Functions).
+required_variables:
+  - function_name
+  - runtime
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: function_arn
+    hint: "Cloud-native unique identifier for the function"
+  - key: invoke_url
+    hint: "HTTP(S) invocation URL for the function trigger endpoint"

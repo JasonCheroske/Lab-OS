@@ -1,0 +1,14 @@
+domain: cdn
+description: >
+  Content delivery network distribution fronting an origin.
+required_variables:
+  - origin_domain
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: cdn_domain
+    hint: "CDN distribution domain name (hostname only, no protocol)"
+  - key: cdn_arn
+    hint: "Cloud-native unique identifier for the CDN distribution"

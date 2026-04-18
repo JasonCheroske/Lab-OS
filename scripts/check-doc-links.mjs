@@ -56,28 +56,40 @@ function decodePathSegment(s) {
 }
 
 /**
- * template/root and template/docs ship fragments that merge to a consumer root
- * at init time. In-repo paths use template/lab, template/docs, template/root.
+ * template/<archetype>/root and template/<archetype>/docs merge to a consumer root at init.
  */
 function resolveTemplateMergedPath(sourceAbs, pathPart) {
   const relSlash = path.relative(projectRoot, sourceAbs).replace(/\\/g, "/");
   const p = pathPart.replace(/\\/g, "/").replace(/^\.\//, "");
 
-  if (relSlash.startsWith("template/root/")) {
-    if (p.startsWith("lab/")) {
-      return path.normalize(path.join(projectRoot, "template", p));
+  const rootM = relSlash.match(/^template\/(agnostic|meta|product-starter)\/root\//);
+  if (rootM) {
+    const arch = rootM[1];
+    if (p.startsWith("lab/") || p.startsWith("docs/")) {
+      return path.normalize(path.join(projectRoot, "template", arch, p));
     }
-    if (p.startsWith("docs/")) {
-      return path.normalize(path.join(projectRoot, "template", p));
+    const topLevel = ["modules", "environments", "tests", ".github", "scripts"];
+    for (const top of topLevel) {
+      if (p === top || p.startsWith(`${top}/`)) {
+        return path.normalize(path.join(projectRoot, "template", arch, p));
+      }
+    }
+    if (p === ".pre-commit-config.yaml" || p === ".terraform-version" || p === ".tflint.hcl") {
+      return path.normalize(path.join(projectRoot, "template", arch, p));
+    }
+    if (p === "lab.yaml") {
+      return path.normalize(path.join(projectRoot, "template", arch, "lab.yaml"));
     }
   }
 
-  if (relSlash.startsWith("template/docs/")) {
+  const docsM = relSlash.match(/^template\/(agnostic|meta|product-starter)\/docs\//);
+  if (docsM) {
+    const arch = docsM[1];
     if (p === "../AGENTS.md") {
-      return path.normalize(path.join(projectRoot, "template", "root", "AGENTS.md"));
+      return path.normalize(path.join(projectRoot, "template", arch, "root", "AGENTS.md"));
     }
     if (p === "../README.md") {
-      return path.normalize(path.join(projectRoot, "template", "root", "README.md"));
+      return path.normalize(path.join(projectRoot, "template", arch, "root", "README.md"));
     }
   }
 

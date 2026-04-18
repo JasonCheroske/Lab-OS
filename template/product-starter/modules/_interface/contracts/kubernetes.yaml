@@ -1,0 +1,25 @@
+domain: kubernetes
+description: >
+  Managed Kubernetes cluster (EKS / AKS / GKE) with a node group / node pool.
+  desired_size is excluded from lifecycle to prevent autoscaler drift.
+  Every implementation must expose these exact output keys.
+required_variables:
+  - cluster_version
+  - vpc_id
+  - subnet_ids
+  - private_subnet_ids
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: cluster_endpoint
+    hint: "HTTPS URL of the Kubernetes API server (starts with https://)"
+  - key: cluster_certificate_authority_data
+    hint: "Base64-encoded CA certificate for kubeconfig"
+  - key: node_role_arn
+    hint: "Worker node identity: IAM role ARN for AWS, managed identity principal_id for Azure, service account email for GCP"
+  - key: cluster_name
+    hint: "Human-readable cluster name"
+  - key: oidc_issuer_url
+    hint: "OIDC issuer URL for workload identity (IRSA for AWS, AKS OIDC for Azure, Workload Identity for GCP)"

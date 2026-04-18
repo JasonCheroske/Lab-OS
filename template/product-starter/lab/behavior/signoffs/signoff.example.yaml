@@ -1,0 +1,8 @@
+change_id: "CHG-0001"
+change_type: "architecture"
+summary: "Example protected change"
+requested_by: "engineer@example.org"
+approved_by: "senior@example.org"
+approved_at: "2026-01-01T00:00:00Z"
+linked_artifacts:
+  - ".lab/evidence/adrs/ADR-0001-example.md"

@@ -1,0 +1,24 @@
+domain: networking
+description: >
+  VPC / VNet / VPC network with public and private subnets per zone and optional NAT gateway.
+  Every implementation must expose these exact output keys.
+required_variables:
+  - cidr_block
+  - azs
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: vpc_id
+    hint: "VPC / VNet / network resource ID; format is cloud-native (vpc-* for AWS, ARM ID for Azure, projects/*/networks/* for GCP)"
+  - key: public_subnet_ids
+    type: list
+    hint: "List of public subnet IDs; one per availability zone"
+  - key: private_subnet_ids
+    type: list
+    hint: "List of private subnet IDs; one per availability zone"
+  - key: cidr_block
+    hint: "Primary CIDR block of the network (e.g. 10.0.0.0/16)"
+  - key: network_arn
+    hint: "Cloud-native globally unique identifier: ARN for AWS, ARM resource ID for Azure, self_link URL for GCP"

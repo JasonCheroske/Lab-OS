@@ -1,0 +1,86 @@
+# Checkov baseline configuration for terraform-reference-lab.
+#
+# This file documents all skipped checks with explicit justification.
+# Checkov is promoted to hard-fail for core modules (Stage 4, ADR-TR-011).
+# Stub modules (cdn, dns, compute, serverless, database/nosql, database/cache) also
+# use this baseline until full implementations are provided.
+#
+# Usage:
+#   checkov -d modules/ --config-file tests/checkov/baseline.checkov.yaml
+#   checkov -d environments/ --config-file tests/checkov/baseline.checkov.yaml
+#
+# Review and tighten this list when promoting from pilot → production.
+
+skip-check:
+  # ── AWS ──────────────────────────────────────────────────────────────────────
+
+  # Public subnets are intentional in the networking/aws module (IGW route, NAT gateway pattern).
+  - CKV_AWS_130  # Ensure VPC subnets do not assign public IP by default
+
+  # Lab study: SQS encryption at-rest with KMS requires additional key management infra.
+  # Promote to hard-fail at production stage with KMS module in place.
+  - CKV_AWS_27   # Ensure all data stored in the SQS queue is encrypted
+
+  # RDS storage encryption is enabled by default when using KMS; the lab uses default
+  # storage_encrypted = false for LocalStack compatibility. Promote when adding KMS module.
+  - CKV_AWS_17   # Ensure all data stored in the RDS instance is securely encrypted
+
+  # Lab study: CloudTrail is out of scope. This fires on any terraform plan against real AWS.
+  - CKV2_AWS_19  # Ensure CloudTrail has CloudWatch integration
+
+  # EKS control plane log groups: not created by the cluster module — out of scope for lab.
+  - CKV_AWS_58   # Ensure Amazon EKS Cluster has Secrets Encryption Enabled
+  - CKV_AWS_37   # Ensure Amazon EKS control plane logging is enabled
+
+  # Security groups allow egress 0.0.0.0/0 — intentional for NAT gateway patterns.
+  - CKV_AWS_23   # Ensure every security groups rule has a description
+
+  # Lambda: lab stubs use placeholder runtimes / no VPC / no DLQ — acceptable for stubs.
+  - CKV_AWS_116  # Ensure Lambda function is configured for a DLQ
+  - CKV_AWS_117  # Ensure Lambda function is configured inside a VPC
+  - CKV_AWS_272  # Ensure Lambda function has code-signing configured
+  - CKV_AWS_50   # X-Ray tracing is enabled for Lambda
+
+  # S3 replication / access logging: out of scope for a study lab.
+  - CKV_AWS_144  # Ensure S3 bucket has cross-region replication enabled
+  - CKV_AWS_18   # Ensure the S3 bucket has access logging enabled
+
+  # ECR: immutable tags and scanning on push are best-practice but not required for lab.
+  - CKV_AWS_51   # Ensure ECR image scanning on push is enabled (set via variable — soft check)
+
+  # DynamoDB (bootstrap state lock table): PITR and KMS are production-grade, not lab needs.
+  - CKV_AWS_28   # Ensure DynamoDB point-in-time recovery is enabled
+  - CKV_AWS_119  # Ensure DynamoDB Tables are encrypted using a KMS CMK
+
+  # ── Azure ────────────────────────────────────────────────────────────────────
+
+  # AKS: RBAC and policies are production hardening, not required for lab study.
+  - CKV_AZURE_7   # Ensure that AKS clusters are not accessible from the public internet
+  - CKV_AZURE_171 # Ensure AKS cluster has Network Policy configured
+  - CKV_AZURE_172 # Ensure AKS uses Azure Policy addon
+
+  # Azure Storage: HTTPS-only and TLS minimum version are defaults in azurerm >= 3.x.
+  - CKV_AZURE_190 # Ensure that Azure Blob storage account is not open to the internet (set via private endpoint in prod)
+
+  # Azure PostgreSQL: SSL enforcement is set by default; Flexible Server always enforces.
+  - CKV_AZURE_28  # Ensure that Azure PostgreSQL server enables SSL enforcement
+
+  # Service Bus: CMK and Premium SKU are production hardening.
+  - CKV_AZURE_202 # Ensure Service Bus is using CMK encryption
+
+  # ── GCP ──────────────────────────────────────────────────────────────────────
+
+  # GKE: public cluster endpoint intentional for lab study (no bastion).
+  - CKV_GCP_25   # Ensure Kubernetes Cluster is not publicly accessible (opt-in at production)
+  - CKV_GCP_68   # Ensure Kubernetes Cluster master authorized networks config is enabled
+
+  # GCS: object versioning is enabled by default in the lab module.
+  - CKV_GCP_78   # Ensure Cloud storage has versioning enabled (set via variable)
+
+  # Cloud SQL: high availability and backup are production-only settings.
+  - CKV_GCP_79   # Ensure Cloud SQL instance backup is enabled
+  - CKV_GCP_14   # Ensure all Cloud SQL database instances have backup enabled
+
+  # GKE shielded nodes and binary auth are production hardening.
+  - CKV_GCP_71   # Ensure Shielded GKE Nodes are enabled
+  - CKV_GCP_66   # Ensure use of Binary Authorization

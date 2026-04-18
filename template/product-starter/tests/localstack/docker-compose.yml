@@ -1,0 +1,18 @@
+# Start: docker compose -f tests/localstack/docker-compose.yml up -d
+# Default endpoint: http://localhost:4566 (see environments/*/variables.tf use_localstack).
+
+services:
+  localstack:
+    image: localstack/localstack:3.8
+    container_name: trf-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,dynamodb,ec2,iam,sts,sqs,rds,eks
+      - DEBUG=0
+      - PERSISTENCE=0
+    volumes:
+      - localstack-data:/var/lib/localstack
+
+volumes:
+  localstack-data:

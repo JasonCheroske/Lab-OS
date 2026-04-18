@@ -1,0 +1,20 @@
+domain: messaging
+description: >
+  Queue + dead-letter queue with three-strike redrive policy.
+  queue_url is the cross-cloud wire point: inject into workloads as TASK_QUEUE_URL.
+  Every implementation must expose these exact output keys.
+required_variables:
+  - max_receive_count
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: queue_url
+    hint: "Primary queue endpoint: HTTPS URL for AWS SQS, Service Bus endpoint for Azure, Pub/Sub subscription ID for GCP"
+  - key: queue_arn
+    hint: "Queue unique identifier: ARN for AWS, ARM resource ID for Azure, Pub/Sub topic resource name for GCP"
+  - key: dlq_url
+    hint: "Dead-letter queue endpoint using same format as queue_url"
+  - key: dlq_arn
+    hint: "Dead-letter queue unique identifier using same format as queue_arn"

@@ -1,0 +1,15 @@
+domain: dns
+description: >
+  DNS hosted zone. Add records with separate resource calls.
+required_variables:
+  - zone_name
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: zone_id
+    hint: "DNS zone ID"
+  - key: name_servers
+    type: list
+    hint: "List of authoritative name server hostnames for the zone"

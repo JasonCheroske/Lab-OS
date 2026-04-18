@@ -1,0 +1,15 @@
+domain: database_nosql
+description: >
+  NoSQL document/key-value store (DynamoDB / CosmosDB / Firestore).
+  Interface-compatible output keys; semantics differ — see database/_variants.md (ADR-TR-008).
+required_variables:
+  - table_name
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: endpoint
+    hint: "Service endpoint for SDK access; format is cloud-native"
+  - key: resource_id
+    hint: "Cloud-native unique identifier for the table / collection"

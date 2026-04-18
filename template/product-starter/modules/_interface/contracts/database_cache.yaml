@@ -1,0 +1,18 @@
+domain: database_cache
+description: >
+  In-memory cache (ElastiCache Redis / Azure Cache for Redis / Memorystore).
+  Redis protocol is consistent across all three; applications are genuinely portable.
+required_variables:
+  - node_type
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: cache_endpoint
+    hint: "Redis hostname or primary endpoint"
+  - key: cache_port
+    type: number
+    hint: "Redis port (typically 6379)"
+  - key: cache_auth_string
+    hint: "Auth token / password for TLS-authenticated Redis connections"

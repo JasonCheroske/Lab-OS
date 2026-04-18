@@ -1,6 +1,6 @@
 {
   "name": "lab-os",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Canonical GitHub seed for AI-native engineering lab scaffolding, governance, and validation workflows.",
   "private": false,
   "type": "module",
@@ -44,6 +44,7 @@
   },
   "scripts": {
     "init": "node scripts/init-lab.mjs",
+    "create": "node scripts/create-lab.mjs",
     "validate": "node scripts/validate-lab.mjs",
     "promote": "node scripts/promote-stage.mjs",
     "test": "node --test tests/*.test.mjs",
@@ -55,7 +56,6 @@
   },
   "dependencies": {
     "ajv": "latest",
-    "lab-os": "^0.2.0",
     "yaml": "latest"
   }
 }

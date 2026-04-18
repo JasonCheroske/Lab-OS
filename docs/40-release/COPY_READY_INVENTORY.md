@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-17
 ---
 
 # Copy-Ready Inventory
@@ -36,12 +36,12 @@ When a user runs `npx lab-os@latest init --target <path>` (or `npm run init -- -
 
 | Source | Target | Notes |
 |--------|--------|-------|
-| `template/lab/` | `lab/` (or `.lab/`) | Required knowledge layer |
-| `template/docs/` | `docs/` | Recommended companion (optional) |
-| `template/root/README.md` | `README.md` | Recommended companion (optional) |
-| `template/root/AGENTS.md` | `AGENTS.md` | Recommended companion (optional) |
-| `template/.ai/` | `.ai/` | Harness namespace (recommended, not validated) |
-| `template/lab.yaml` | `lab.yaml` | Required |
+| `template/agnostic/lab/` | `lab/` (or `.lab/`) | Required knowledge layer (default template) |
+| `template/agnostic/docs/` | `docs/` | Recommended companion (optional) |
+| `template/agnostic/root/README.md` | `README.md` | Recommended companion (optional) |
+| `template/agnostic/root/AGENTS.md` | `AGENTS.md` | Recommended companion (optional) |
+| `template/agnostic/.ai/` | `.ai/` | Harness namespace (recommended, not validated) |
+| `template/agnostic/lab.yaml` | `lab.yaml` | Required |
 
 ### Never in init output (npm-package-only)
 

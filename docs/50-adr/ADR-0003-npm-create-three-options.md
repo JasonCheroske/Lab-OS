@@ -1,13 +1,14 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-17
 ---
 
-# ADR-0003: `npm create lab-os` three-option picker
+# ADR-0003: `lab-os create` three-option picker
 
-**Status:** Planned (phase 2)
+**Status:** Accepted (implementation in progress — see implementation order below)
 **Date:** 2026-04-05
-**Intent:** Define the three-option interactive create experience for `npm create lab-os` (and `npx lab-os create`), analogous to Svelte's `create-svelte` skeleton / demo app / library picker.
+**Updated:** 2026-04-07
+**Intent:** Define the three-option interactive create experience for **`lab-os create`** (via **`npx lab-os@latest create`** or a global `lab-os` install), analogous to Svelte's `create-svelte` skeleton / demo app / library picker. Distribution is a **single** npm package `lab-os` (no separate `create-*` initializer).
 
 ## Context
 
@@ -61,11 +62,11 @@ Current `template/` remains the `agnostic` default. Migration: rename to `templa
 ### CLI design
 
 ```bash
-npm create lab-os               # interactive picker: choose agnostic / product-starter / meta
-npx lab-os create               # same
-npx lab-os create --template agnostic --target ./my-lab     # non-interactive
-npx lab-os create --template product-starter --target ./my-lab
-npx lab-os create --template meta --target ./my-lab
+npx lab-os@latest create                          # interactive: choose agnostic / product-starter / meta
+lab-os create                                     # same after npm install -g lab-os
+npx lab-os@latest create --template agnostic --target ./my-lab     # non-interactive
+npx lab-os@latest create --template product-starter --target ./my-lab
+npx lab-os@latest create --template meta --target ./my-lab
 ```
 
 The interactive flow mirrors `create-svelte`: prompt for template, optional name/path, emit init output. Implemented via the Node.js `readline` API or a lightweight prompt library.
@@ -76,17 +77,16 @@ The initial `product-starter` archetype is derived from `.tmp/terraform-referenc
 
 ### Meta lab content
 
-The `meta` archetype ships the Lab OS development surface (current `lab-os-lab` without the `.tmp/` scratch and personal artifacts). It is the full workshop for building and incubating labs.
+**Implemented (Option B — thin scaffold):** The published `template/meta/` archetype mirrors the agnostic knowledge and companion layout with copy tuned for meta-workshop intent. Full `scripts/`, nested templates, and examples are **not** vendored in the npm tarball to limit size; consumers clone [JasonCheroske/Lab-OS](https://github.com/JasonCheroske/Lab-OS) for the complete toolkit (documented in `template/meta/docs/META_WORKSHOP_SOURCE.md` after init). A heavier “full mirror” package layout remains a future option if demand warrants it.
 
 ## Implementation order
 
 1. **Phase 1 (current):** `template/` = agnostic default. `lab-os init` works against it as today.
-2. **Phase 2 (this ADR):**
-   - Rename `template/` → `template/agnostic/`; update `init-lab.mjs` to default to `agnostic`.
-   - Create `template/product-starter/` stub; run filter pass on Terraform reference lab to populate it.
-   - Create `template/meta/` stub from Lab OS canonical surface.
-   - Add `create` command to `lab-os.mjs` with interactive picker.
-   - Update tests: `init --template agnostic` still passes all existing assertions.
+2. **Phase 2 (this ADR):** *(repository status — 2026-04-07)*
+   - [x] `template/agnostic/` + `init-lab.mjs --template` (default `agnostic`).
+   - [x] `template/product-starter/` populated from filtered `.tmp/terraform-reference-lab` (see [PRODUCT_LAB_FILTER_RUNBOOK.md](../30-runbooks/PRODUCT_LAB_FILTER_RUNBOOK.md)).
+   - [x] `template/meta/` thin scaffold (Option B).
+   - [x] `lab-os create` interactive and non-interactive; tests cover agnostic, product-starter, and meta init/validate where applicable.
 
 ## Consequences
 
@@ -99,4 +99,5 @@ The `meta` archetype ships the Lab OS development surface (current `lab-os-lab` 
 
 | Date | Change summary | Editor |
 |------|----------------|--------|
+| 2026-04-07 | Implemented agnostic/product-starter/meta, `lab-os create`, meta Option B; single-package distribution (no `create-lab-os`). | — |
 | 2026-04-05 | Initial decision; phase 2 design stub. | — |

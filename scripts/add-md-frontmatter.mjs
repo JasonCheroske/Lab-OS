@@ -18,11 +18,11 @@
  *
  * When rewriting, strips a stacked second frontmatter if it contains only ISO
  * created/updated (artifact from bulk runs); --check rejects the same pattern.
- * Input is normalized CRLF→LF so Windows checkouts still parse correctly.
+ * Parsing normalizes CRLF→LF; writes preserve each file's EOL style (\n vs \r\n).
  */
 import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
-import { dirname, join, relative } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -32,6 +32,9 @@ const argv = process.argv.slice(2);
 const force = argv.includes("--force");
 const fixOrder = argv.includes("--fix-order");
 const check = argv.includes("--check");
+const dashIdx = argv.indexOf("--");
+const pathArgs =
+  dashIdx >= 0 ? argv.slice(dashIdx + 1).filter((a) => a && !a.startsWith("-")) : [];
 
 function walkMd(dir, out = []) {
   for (const name of readdirSync(dir)) {
@@ -65,13 +68,26 @@ function normalizePair(created, updated) {
   return { created: updated, updated: created };
 }
 
+const datesForFileCache = new Map();
+
 function datesForFile(rel) {
+  if (datesForFileCache.has(rel)) return datesForFileCache.get(rel);
   const createdRaw =
     gitDate(["log", "--follow", "--reverse", "-1", "--format=%cs", "--", rel]) ||
     new Date().toISOString().slice(0, 10);
   const updatedRaw =
     gitDate(["log", "-1", "--format=%cs", "--", rel]) || createdRaw;
-  return normalizePair(createdRaw, updatedRaw);
+  const pair = normalizePair(createdRaw, updatedRaw);
+  datesForFileCache.set(rel, pair);
+  return pair;
+}
+
+/** Read file as LF for parsing; keep EOL style for writes. */
+function readLfAndEol(absPath) {
+  const raw = readFileSync(absPath, "utf8");
+  const eol = raw.includes("\r\n") ? "\r\n" : "\n";
+  const text = raw.replace(/\r\n/g, "\n");
+  return { text, eol };
 }
 
 function parseFirstFrontmatter(text) {
@@ -152,7 +168,7 @@ function extractIsoDatesFromInner(inner) {
 function processFile(absPath) {
   const rel = relPosix(absPath);
   const { created, updated } = datesForFile(rel);
-  const text = readFileSync(absPath, "utf8").replace(/\r\n/g, "\n");
+  const { text, eol } = readLfAndEol(absPath);
   const parsed = parseFirstFrontmatter(text);
 
   if (parsed) {
@@ -167,17 +183,19 @@ function processFile(absPath) {
     const rest = stripStackedDateFrontmatter(parsed.rest).replace(/^\n+/, "");
     const next = `---\n${inner.trimEnd()}\n---\n\n${rest}`;
     if (next === text) return false;
-    writeFileSync(absPath, next, "utf8");
+    writeFileSync(absPath, next.replace(/\n/g, eol), "utf8");
     return true;
   }
 
   const out = prependFrontmatter(text, created, updated);
-  writeFileSync(absPath, out, "utf8");
+  const outLf = out.replace(/\r\n/g, "\n");
+  if (outLf === text) return false;
+  writeFileSync(absPath, outLf.replace(/\n/g, eol), "utf8");
   return true;
 }
 
 function processFixOrderOnly(absPath) {
-  const text = readFileSync(absPath, "utf8").replace(/\r\n/g, "\n");
+  const { text, eol } = readLfAndEol(absPath);
   const parsed = parseFirstFrontmatter(text);
   if (!parsed) return false;
   const pair = extractIsoDatesFromInner(parsed.inner);
@@ -188,7 +206,7 @@ function processFixOrderOnly(absPath) {
   const rest = stripStackedDateFrontmatter(parsed.rest).replace(/^\n+/, "");
   const next = `---\n${inner.trimEnd()}\n---\n\n${rest}`;
   if (next === text) return false;
-  writeFileSync(absPath, next, "utf8");
+  writeFileSync(absPath, next.replace(/\n/g, eol), "utf8");
   return true;
 }
 
@@ -221,7 +239,7 @@ function runCheck() {
       console.error(`  ${b.file}  (created ${b.created}, updated ${b.updated})`);
     }
     console.error(
-      "\nFix: run `node scripts/add-md-frontmatter.mjs --force` (git dates) or `--fix-order` (min/max of current values).",
+      "\nFix: run `node scripts/add-md-frontmatter.mjs --force` (git dates) or `--fix-order` (min/max of current values). For one file: `--fix-order -- path/to/file.md`.",
     );
     process.exit(1);
   }
@@ -247,7 +265,22 @@ if (check) {
   process.exit(0);
 }
 
-const files = walkMd(ROOT).sort();
+function resolveFileListFromArgs() {
+  if (pathArgs.length === 0) return walkMd(ROOT).sort();
+  const out = [];
+  for (const p of pathArgs) {
+    const abs = isAbsolute(p) ? p : resolve(ROOT, p);
+    try {
+      const st = statSync(abs);
+      if (st.isFile() && abs.endsWith(".md")) out.push(abs);
+    } catch {
+      console.error(`[add-md-frontmatter] skip missing or unreadable: ${p}`);
+    }
+  }
+  return out.sort();
+}
+
+const files = resolveFileListFromArgs();
 let n = 0;
 
 if (fixOrder) {
@@ -261,8 +294,17 @@ if (fixOrder) {
       console.log(relPosix(f));
     }
   }
-  console.error(`[add-md-frontmatter] --fix-order: updated ${n} of ${files.length} markdown files.`);
+  console.error(
+    `[add-md-frontmatter] --fix-order: updated ${n} of ${files.length} markdown file(s).`,
+  );
   process.exit(0);
+}
+
+if (pathArgs.length > 0 && !fixOrder && !force) {
+  console.error(
+    "[add-md-frontmatter] paths after -- require --fix-order or --force (default mode walks the whole repo).",
+  );
+  process.exit(2);
 }
 
 for (const f of files) {

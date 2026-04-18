@@ -13,6 +13,19 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-04-07
+
+### Added
+
+- **`lab-os create`:** Interactive archetype picker (readline) for agnostic, product-starter, and meta; non-interactive mode with `--template`, `--target`, and `--yes` or `LAB_OS_CREATE_NONINTERACTIVE=1`; wired in [`bin/lab-os.mjs`](bin/lab-os.mjs) and [`scripts/create-lab.mjs`](scripts/create-lab.mjs). Same **`lab-os`** package only—use `npx lab-os@latest create` or global `lab-os create` (see [ADR-0001](docs/50-adr/ADR-0001-package-boundaries-and-npm-distribution.md)).
+- **Template layout:** Default seed moved to [`template/agnostic/`](template/agnostic); `init-lab.mjs` accepts `--template agnostic|product-starter|meta` (default `agnostic`).
+- **Product-starter archetype:** Terraform multi-cloud reference under [`template/product-starter`](template/product-starter) (filtered from `.tmp/terraform-reference-lab`; placeholder values in `*.tfvars`). `init` copies optional `modules/`, `environments/`, `tests/`, `.github/`, `scripts/`, and `.pre-commit-config.yaml` when present in the template.
+- **Meta archetype:** Thin workshop scaffold under [`template/meta`](template/meta) (Option B per [ADR-0003](docs/50-adr/ADR-0003-npm-create-three-options.md)) with docs pointing to the full [Lab-OS](https://github.com/JasonCheroske/Lab-OS) clone.
+
+### Changed
+
+- Docs and [check-doc-links](scripts/check-doc-links.mjs) updated for `template/agnostic/` paths.
+
 ## [0.2.1] - 2026-04-06
 
 ### Fixed
@@ -26,7 +39,7 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 - `.ai/` harness namespace shipped in every `init` output (skills, rules, Cursor defaults); `init-lab.mjs` copies `template/.ai/`.
 - `harness-fetch` skill stub (phase 2 planned): agnostic workflow to pull harness config locally without committing personal artifacts.
 - [ADR-0002](docs/50-adr/ADR-0002-ai-harness-namespace.md): harness namespace model, seed vs package, fork policy.
-- [ADR-0003](docs/50-adr/ADR-0003-npm-create-three-options.md): three-option `npm create lab-os` design (phase 2); `lab-os create` stub in CLI.
+- [ADR-0003](docs/50-adr/ADR-0003-npm-create-three-options.md): three-option `lab-os create` design (phase 2); stub in CLI until archetype work ships.
 - [PRODUCT_LAB_FILTER_RUNBOOK.md](docs/30-runbooks/PRODUCT_LAB_FILTER_RUNBOOK.md): checklist before promoting a product lab to a product-starter archetype.
 - Explicit init includes/excludes and harness gitignore guidance in [COPY_READY_INVENTORY.md](docs/40-release/COPY_READY_INVENTORY.md).
 - [LEAN_FOUNDATIONS.md](docs/60-reference/LEAN_FOUNDATIONS.md): seven lean principles mapped to Lab OS; research/execution modes in [FOUNDATIONS_VOCABULARY.md](docs/60-reference/FOUNDATIONS_VOCABULARY.md).
@@ -48,7 +61,8 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 - Initial public seed release (`v0.1.0`): scaffold, validation, promotion, tarball artifact, and runbooks.
 
-[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.3.0
 [0.2.1]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.1
 [0.2.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.0
 [0.1.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.1.0

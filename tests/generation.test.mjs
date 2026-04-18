@@ -11,7 +11,8 @@ const runNode = (args) => execFileSync(process.execPath, args, { cwd: projectRoo
 
 test("init creates required lab artifacts", () => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-init-"));
-  runNode(["scripts/init-lab.mjs", "--target", tmpDir]);
+  const out = runNode(["scripts/init-lab.mjs", "--target", tmpDir]);
+  assert.match(out, /template: agnostic/);
   assert.ok(fs.existsSync(path.join(tmpDir, "lab.yaml")));
   assert.ok(fs.existsSync(path.join(tmpDir, "lab", "intent", "ARCHITECTURE_TARGET.md")));
   assert.ok(fs.existsSync(path.join(tmpDir, "docs", "README.md")));
@@ -61,6 +62,44 @@ test("init creates .ai workspace with harness namespace structure", () => {
   assert.ok(fs.existsSync(path.join(tmpDir, ".ai", "rules", "README.md")));
   assert.ok(fs.existsSync(path.join(tmpDir, ".ai", ".cursor", "skills", "lab-init", "SKILL.md")));
   assert.ok(fs.existsSync(path.join(tmpDir, ".ai", ".cursor", "rules", "lab-init-default.mdc")));
+});
+
+test("init --template agnostic matches explicit default", () => {
+  const tmpDefault = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-tmpl-def-"));
+  const tmpExplicit = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-tmpl-exp-"));
+  runNode(["scripts/init-lab.mjs", "--target", tmpDefault]);
+  runNode(["scripts/init-lab.mjs", "--target", tmpExplicit, "--template", "agnostic"]);
+  const yamlDef = fs.readFileSync(path.join(tmpDefault, "lab.yaml"), "utf8");
+  const yamlExp = fs.readFileSync(path.join(tmpExplicit, "lab.yaml"), "utf8");
+  assert.equal(yamlExp, yamlDef);
+});
+
+test("init meta template validates", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-meta-"));
+  runNode(["scripts/init-lab.mjs", "--target", tmpDir, "--template", "meta"]);
+  const out = runNode(["scripts/validate-lab.mjs", "--target", tmpDir]);
+  assert.match(out, /Validation passed/);
+});
+
+test("init product-starter template validates", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-prod-start-"));
+  runNode(["scripts/init-lab.mjs", "--target", tmpDir, "--template", "product-starter"]);
+  const out = runNode(["scripts/validate-lab.mjs", "--target", tmpDir]);
+  assert.match(out, /Validation passed/);
+});
+
+test("lab-os create non-interactive scaffolds agnostic lab from caller cwd", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-create-"));
+  const binPath = path.join(projectRoot, "bin", "lab-os.mjs");
+  const out = execFileSync(
+    process.execPath,
+    [binPath, "create", "--template", "agnostic", "--target", "create-cwd-smoke", "--yes"],
+    { cwd: tmpDir, encoding: "utf8" }
+  );
+  const labRoot = path.join(tmpDir, "create-cwd-smoke");
+  assert.match(out, /Lab initialized at:/);
+  assert.match(out, /template: agnostic/);
+  assert.ok(fs.existsSync(path.join(labRoot, "lab.yaml")));
 });
 
 test("lab-os CLI resolves init target from caller cwd (npx / global)", () => {

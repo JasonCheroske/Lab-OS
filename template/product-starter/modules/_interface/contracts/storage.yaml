@@ -1,0 +1,17 @@
+domain: storage
+description: >
+  Object storage (S3 / Azure Blob / GCS). Versioning and encryption enabled by default.
+required_variables:
+  - bucket_name
+  - versioning
+  - team
+  - environment
+  - owner
+  - tags
+outputs:
+  - key: bucket_name
+    hint: "Bucket / container name as provisioned (may differ from input if cloud adds suffix)"
+  - key: bucket_arn
+    hint: "Cloud-native unique identifier: ARN for AWS, ARM resource ID for Azure, GCS bucket URL for GCP"
+  - key: bucket_domain
+    hint: "Bucket endpoint domain for SDK / CLI access"
