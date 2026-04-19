@@ -13,6 +13,10 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 ## [Unreleased]
 
+### Fixed
+
+- **`check-doc-links.mjs`:** Template companion Markdown uses consumer paths (`.lab/`, `../.lab/`) while sources still live under `template/<arch>/lab/`. The link checker now maps those targets to `template/<arch>/lab/` so `lab:verify` and CI smoke agree with init output.
+
 ## [0.3.1] - 2026-04-19
 
 ### Changed

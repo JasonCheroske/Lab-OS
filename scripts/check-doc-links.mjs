@@ -65,6 +65,13 @@ function resolveTemplateMergedPath(sourceAbs, pathPart) {
   const rootM = relSlash.match(/^template\/(agnostic|meta|product-starter)\/root\//);
   if (rootM) {
     const arch = rootM[1];
+    // Consumer init copies template/<arch>/lab/ to target/.lab/ — resolve .lab/* as lab/* in-repo.
+    if (p.startsWith(".lab/")) {
+      return path.normalize(path.join(projectRoot, "template", arch, "lab", p.slice(".lab/".length)));
+    }
+    if (p === ".lab" || p === ".lab/") {
+      return path.normalize(path.join(projectRoot, "template", arch, "lab"));
+    }
     if (p.startsWith("lab/") || p.startsWith("docs/")) {
       return path.normalize(path.join(projectRoot, "template", arch, p));
     }
@@ -90,6 +97,14 @@ function resolveTemplateMergedPath(sourceAbs, pathPart) {
     }
     if (p === "../README.md") {
       return path.normalize(path.join(projectRoot, "template", arch, "root", "README.md"));
+    }
+    if (p.startsWith("../.lab/")) {
+      return path.normalize(
+        path.join(projectRoot, "template", arch, "lab", p.slice("../.lab/".length))
+      );
+    }
+    if (p === "../.lab" || p === "../.lab/") {
+      return path.normalize(path.join(projectRoot, "template", arch, "lab"));
     }
   }
 
