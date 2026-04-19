@@ -7,7 +7,7 @@ updated: 2026-04-17
 
 <!-- emulator_supported: false (GKE: no GCP emulator available; requires real GCP project) -->
 
-GKE cluster with a dedicated node pool and autoscaling. `initial_node_count` is excluded from lifecycle to prevent drift on cluster autoscaler changes (see `lab/behavior/SCALER_POLICY.md`).
+GKE cluster with a dedicated node pool and autoscaling. `initial_node_count` is excluded from lifecycle to prevent drift on cluster autoscaler changes (see `.lab/behavior/SCALER_POLICY.md`).
 
 ## Outputs
 

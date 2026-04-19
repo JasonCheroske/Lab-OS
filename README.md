@@ -41,7 +41,7 @@ lab-os-lab/
   tests/
 ```
 
-When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/agnostic/root/` by default), **`docs/README.md`** and **`docs/project-structure.md`**, and **`.ai/`** (harness namespace), as recommended companions to `lab/*`; they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Other archetypes use `template/product-starter/` or `template/meta/` via `--template` or `lab-os create`. Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
+When you **initialize** a lab at another root, `init` copies **`README.md`** and **`AGENTS.md`** (from `template/agnostic/root/` by default), **`docs/README.md`** and **`docs/project-structure.md`**, and **`.ai/`** (harness namespace), as recommended companions to **`.lab/*`** (default; use `--knowledge-dir lab` for `lab/*`); they are optional for `validate` (see [docs/10-architecture/LAB_CONTRACT.md](docs/10-architecture/LAB_CONTRACT.md)). Other archetypes use `template/product-starter/` or `template/meta/` via `--template` or `lab-os create`. Consumer playbook: [docs/30-runbooks/SEED_STARTUP_RUNBOOK.md](docs/30-runbooks/SEED_STARTUP_RUNBOOK.md).
 
 ## npm package
 

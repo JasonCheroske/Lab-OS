@@ -7,15 +7,15 @@ updated: 2026-04-17
 
 This folder is **not** required by Lab OS validation. It is a lightweight index so humans and agents find context quickly. You can delete `docs/` and still pass `validate`; consider keeping an index elsewhere if you remove it.
 
-## Lab pillars (`../lab/`)
+## Lab pillars (`../.lab/`)
 
 | Area | Path | Role |
 | --- | --- | --- |
-| Intent | `../lab/intent/` | Target architecture and direction |
-| Reality | `../lab/reality/` | What exists today |
-| Delta | `../lab/delta/` | Gaps and planned work |
-| Behavior | `../lab/behavior/` | Governance and how you operate |
-| Evidence | `../lab/evidence/` | Readiness checks and proof |
+| Intent | `../.lab/intent/` | Target architecture and direction |
+| Reality | `../.lab/reality/` | What exists today |
+| Delta | `../.lab/delta/` | Gaps and planned work |
+| Behavior | `../.lab/behavior/` | Governance and how you operate |
+| Evidence | `../.lab/evidence/` | Readiness checks and proof |
 
 Extend this table as your workspace grows. Product-specific diagrams often land under a folder such as `docs/diagrams/` once you add them.
 

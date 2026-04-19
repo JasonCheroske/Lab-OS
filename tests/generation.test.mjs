@@ -14,7 +14,8 @@ test("init creates required lab artifacts", () => {
   const out = runNode(["scripts/init-lab.mjs", "--target", tmpDir]);
   assert.match(out, /template: agnostic/);
   assert.ok(fs.existsSync(path.join(tmpDir, "lab.yaml")));
-  assert.ok(fs.existsSync(path.join(tmpDir, "lab", "intent", "ARCHITECTURE_TARGET.md")));
+  assert.ok(fs.existsSync(path.join(tmpDir, ".lab", "intent", "ARCHITECTURE_TARGET.md")));
+  assert.ok(!fs.existsSync(path.join(tmpDir, "lab")));
   assert.ok(fs.existsSync(path.join(tmpDir, "docs", "README.md")));
   assert.ok(fs.existsSync(path.join(tmpDir, "docs", "project-structure.md")));
   assert.ok(fs.existsSync(path.join(tmpDir, "README.md")));
@@ -28,11 +29,11 @@ test("validate passes for generated lab", () => {
   assert.match(output, /Validation passed/);
 });
 
-test("init with .lab and validate passes", () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-dotlab-"));
-  runNode(["scripts/init-lab.mjs", "--target", tmpDir, "--knowledge-dir", ".lab"]);
-  assert.ok(fs.existsSync(path.join(tmpDir, ".lab", "intent", "ARCHITECTURE_TARGET.md")));
-  assert.ok(!fs.existsSync(path.join(tmpDir, "lab")));
+test("init with explicit lab and validate passes", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "lab-os-explicit-lab-"));
+  runNode(["scripts/init-lab.mjs", "--target", tmpDir, "--knowledge-dir", "lab"]);
+  assert.ok(fs.existsSync(path.join(tmpDir, "lab", "intent", "ARCHITECTURE_TARGET.md")));
+  assert.ok(!fs.existsSync(path.join(tmpDir, ".lab")));
   const output = runNode(["scripts/validate-lab.mjs", "--target", tmpDir]);
   assert.match(output, /Validation passed/);
 });

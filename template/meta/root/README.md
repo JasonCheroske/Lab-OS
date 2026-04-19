@@ -7,22 +7,22 @@ updated: 2026-04-17
 
 This root was created with the **`meta`** archetype: a thin Lab OS surface for **building and evolving labs** (governance, harness, knowledge layer). For the full `lab-os-lab` toolkit (`scripts/`, `examples/`, release automation), clone [Lab-OS on GitHub](https://github.com/JasonCheroske/Lab-OS) — see [docs/META_WORKSHOP_SOURCE.md](docs/META_WORKSHOP_SOURCE.md).
 
-This folder is a **Lab OS** workspace: governed intent, reality, gaps, behavior, and evidence live under **`lab/`** or **`.lab/`** (same subtree; pick one—see Lab OS `LAB_CONTRACT`), with optional navigation in `docs/`. Validation checks only `lab.yaml` and the required knowledge-layer artifacts.
+This folder is a **Lab OS** workspace: governed intent, reality, gaps, behavior, and evidence live under **`.lab/`** or **`lab/`** (same subtree; pick one—see Lab OS `LAB_CONTRACT`). Default `init` uses **`.lab/`**; pass `--knowledge-dir lab` for a non-hidden folder name. Optional navigation lives in `docs/`. Validation checks only `lab.yaml` and the required knowledge-layer artifacts.
 
 ## Start here (short arc)
 
-1. **Plan** — Before heavy implementation, align [Architecture target](lab/intent/ARCHITECTURE_TARGET.md), [implementation map](lab/reality/IMPLEMENTATION_MAP.md), and [gap map](lab/delta/GAP_MAP.md). Update [project structure](docs/project-structure.md) when layout changes.
+1. **Plan** — Before heavy implementation, align [Architecture target](.lab/intent/ARCHITECTURE_TARGET.md), [implementation map](.lab/reality/IMPLEMENTATION_MAP.md), and [gap map](.lab/delta/GAP_MAP.md). Update [project structure](docs/project-structure.md) when layout changes.
 2. **Build** — Add application or service code under paths you record in `docs/project-structure.md` (the seed does not pick a stack).
-3. **Check** — Run **validate** often; run **promote** only when evidence supports the next maturity stage (see [readiness checks](lab/evidence/READINESS_CHECKS.md)).
+3. **Check** — Run **validate** often; run **promote** only when evidence supports the next maturity stage (see [readiness checks](.lab/evidence/READINESS_CHECKS.md)).
 
 ## Where to read next
 
 | Document | Purpose |
 | --- | --- |
-| [docs/README.md](docs/README.md) | Mini-index of `lab/*` pillars |
+| [docs/README.md](docs/README.md) | Mini-index of `.lab/*` pillars |
 | [docs/project-structure.md](docs/project-structure.md) | Tree of this root |
 | [AGENTS.md](AGENTS.md) | Guidance for AI assistants in this workspace |
-| [lab/behavior/GOVERNANCE_POLICY.md](lab/behavior/GOVERNANCE_POLICY.md) | How changes are governed |
+| [.lab/behavior/GOVERNANCE_POLICY.md](.lab/behavior/GOVERNANCE_POLICY.md) | How changes are governed |
 
 ## Validate and promote
 

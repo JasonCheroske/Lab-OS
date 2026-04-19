@@ -5,7 +5,7 @@ updated: 2026-04-17
 
 ﻿# IAM — Why not abstracted
 
-See **ADR-TR-008** in `lab/intent/DESIGN_DECISIONS.md` for the full rationale. Short version:
+See **ADR-TR-008** in `.lab/intent/DESIGN_DECISIONS.md` for the full rationale. Short version:
 
 AWS IAM Roles + Policies, Azure Managed Identity + Role Assignments, and GCP Service Accounts + IAM Bindings have fundamentally different permission models. A common interface would either:
 - Expose the most restrictive common subset (useless in practice), or

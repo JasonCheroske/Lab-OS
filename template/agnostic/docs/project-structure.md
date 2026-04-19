@@ -10,7 +10,7 @@ Annotate this tree as you **sprout** so “where things live” stays obvious.
 ```text
 <your-root>/
   lab.yaml
-  lab/
+  .lab/
     intent/
     reality/
     delta/

@@ -33,7 +33,7 @@ updated: 2026-04-17
 
 **Decision:** SQS + DLQ + redrive policy live in `modules/messaging`; consumers receive `queue_url`.
 
-**Rationale:** Centralizes the "three-strike" queue policy documented in `lab/behavior/FAILOVER_POLICY.md`.
+**Rationale:** Centralizes the "three-strike" queue policy documented in `.lab/behavior/FAILOVER_POLICY.md`.
 
 ## ADR-TR-006: Multi-cloud module path convention
 

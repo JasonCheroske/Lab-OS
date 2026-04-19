@@ -36,7 +36,7 @@ When a user runs `npx lab-os@latest init --target <path>` (or `npm run init -- -
 
 | Source | Target | Notes |
 |--------|--------|-------|
-| `template/agnostic/lab/` | `lab/` (or `.lab/`) | Required knowledge layer (default template) |
+| `template/agnostic/lab/` | `.lab/` (default) or `lab/` (`--knowledge-dir lab`) | Required knowledge layer (default template) |
 | `template/agnostic/docs/` | `docs/` | Recommended companion (optional) |
 | `template/agnostic/root/README.md` | `README.md` | Recommended companion (optional) |
 | `template/agnostic/root/AGENTS.md` | `AGENTS.md` | Recommended companion (optional) |

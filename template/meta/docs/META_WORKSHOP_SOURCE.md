@@ -11,4 +11,4 @@ For the **complete** toolkit—`scripts/`, `schema/`, nested `template/*`, `exam
 
 [https://github.com/JasonCheroske/Lab-OS](https://github.com/JasonCheroske/Lab-OS)
 
-Use this thin root when you want meta-flavored `lab/` intent without vendoring the entire mono-repo into your workspace; use the Git clone when you are authoring seeds, archetypes, or registry releases.
+Use this thin root when you want meta-flavored `.lab/` intent without vendoring the entire mono-repo into your workspace; use the Git clone when you are authoring seeds, archetypes, or registry releases.

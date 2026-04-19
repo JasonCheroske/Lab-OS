@@ -9,7 +9,7 @@ updated: 2026-04-17
 
 SQS primary queue, DLQ, and redrive policy implementing the three-strike failover pattern. Queue names follow `{team}-{environment}-jobs` and `{team}-{environment}-jobs-dlq`. The `queue_url` output is the cross-cloud wire point: inject it into workloads as `TASK_QUEUE_URL` regardless of which cloud is active.
 
-See `lab/behavior/FAILOVER_POLICY.md` for the three-strike semantics.
+See `.lab/behavior/FAILOVER_POLICY.md` for the three-strike semantics.
 
 ## Inputs
 

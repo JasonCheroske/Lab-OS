@@ -7,7 +7,7 @@ updated: 2026-04-17
 
 <!-- emulator_supported: partial (LocalStack Community: RDS emulation is limited — endpoint is available but engine behaviour is not fully replicated) -->
 
-RDS instance (PostgreSQL or MySQL), subnet group, and security group. Instance name follows the `{team}-{environment}` convention. Password should be sourced from Secrets Manager in production (see `lab/intent/DESIGN_DECISIONS.md` ADR-TR-008).
+RDS instance (PostgreSQL or MySQL), subnet group, and security group. Instance name follows the `{team}-{environment}` convention. Password should be sourced from Secrets Manager in production (see `.lab/intent/DESIGN_DECISIONS.md` ADR-TR-008).
 
 ## Inputs
 

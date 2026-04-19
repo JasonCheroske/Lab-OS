@@ -30,7 +30,7 @@ export function fileExists(filePath) {
 }
 
 /**
- * Lab OS knowledge layer may live at repo-root `lab/` (default seed) or `.lab/` (dot-dir, metadata-style).
+ * Lab OS knowledge layer may live at repo-root `.lab/` (default init output) or `lab/` (non-dot name).
  * Returns { root: "lab" | ".lab" } or { error: string } if missing or ambiguous.
  */
 export function resolveKnowledgeRootDir(targetDir) {

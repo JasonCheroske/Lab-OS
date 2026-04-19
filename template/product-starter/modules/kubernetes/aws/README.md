@@ -7,7 +7,7 @@ updated: 2026-04-17
 
 <!-- emulator_supported: false (EKS: LocalStack Community does not emulate EKS control plane or node groups) -->
 
-EKS cluster and managed node group. Cluster and node names follow the `{team}-{environment}` convention. `desired_size` is excluded from lifecycle to avoid drift on autoscaler changes (see `lab/behavior/SCALER_POLICY.md`).
+EKS cluster and managed node group. Cluster and node names follow the `{team}-{environment}` convention. `desired_size` is excluded from lifecycle to avoid drift on autoscaler changes (see `.lab/behavior/SCALER_POLICY.md`).
 
 ## Inputs
 

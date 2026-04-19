@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-19
 ---
 
 # Changelog
@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY.md).
 
 ## [Unreleased]
+
+## [0.3.1] - 2026-04-19
+
+### Changed
+
+- **`init` default knowledge directory:** `scripts/init-lab.mjs` now copies the template knowledge layer to repo-root **`.lab/`** by default (was `lab/`). Pass **`--knowledge-dir lab`** for the previous layout. Validation already accepted either root; template companion links and docs are aligned with the new default.
 
 ## [0.3.0] - 2026-04-07
 
@@ -61,7 +67,8 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 - Initial public seed release (`v0.1.0`): scaffold, validation, promotion, tarball artifact, and runbooks.
 
-[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.3.1
 [0.3.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.3.0
 [0.2.1]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.1
 [0.2.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.0

@@ -10,7 +10,7 @@ updated: 2026-04-04
 
 # Multi-cloud guide
 
-A concise getting-started reference for the three-cloud architecture introduced in `lab.yaml` v2.0.0. For a full directory tree see [project-structure.md](project-structure.md). For service-level equivalency see [../lab/intent/CLOUD_EQUIVALENCY.md](../lab/intent/CLOUD_EQUIVALENCY.md).
+A concise getting-started reference for the three-cloud architecture introduced in `lab.yaml` v2.0.0. For a full directory tree see [project-structure.md](project-structure.md). For service-level equivalency see [../.lab/intent/CLOUD_EQUIVALENCY.md](../.lab/intent/CLOUD_EQUIVALENCY.md).
 
 ---
 
@@ -22,7 +22,7 @@ The lab uses an **interface + implementation** pattern for Terraform modules:
 - `modules/_interface/contracts/<domain>.yaml` — declares the output keys every cloud implementation must expose (e.g., `network_arn`, `vpc_id`, `queue_url`).
 - `modules/<domain>/<cloud>/` — cloud-specific implementations that satisfy the contract. Each has its own `main.tf`, `variables.tf`, `outputs.tf`, and a `README.md` containing `emulator_supported:`.
 
-IAM/identity is **not** abstracted (see ADR-TR-008 in [../lab/intent/DESIGN_DECISIONS.md](../lab/intent/DESIGN_DECISIONS.md)). Every other domain uses the same naming convention (`{team}-{environment}`), the same `common_tags` locals block, and the same standard input variables.
+IAM/identity is **not** abstracted (see ADR-TR-008 in [../.lab/intent/DESIGN_DECISIONS.md](../.lab/intent/DESIGN_DECISIONS.md)). Every other domain uses the same naming convention (`{team}-{environment}`), the same `common_tags` locals block, and the same standard input variables.
 
 Contract compliance is verified with `scripts/validate-contracts.mjs`. Run it before opening a PR.
 

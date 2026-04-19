@@ -18,4 +18,4 @@ This file satisfies the Lab OS **intent** pillar contract. Authoritative narrati
 | [DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md) | ADRs and structural rationale |
 | [SKILL_GUIDE.md](./SKILL_GUIDE.md) | How to navigate the lab by experience level |
 
-**Target state:** A reference Terraform workspace with reusable `modules/`, isolated `environments/*` state, GitHub Actions for plan/apply/drift, pre-commit quality gates, and LocalStack-first AWS compatibility documented in `lab/reality/ARCHITECTURE.md`.
+**Target state:** A reference Terraform workspace with reusable `modules/`, isolated `environments/*` state, GitHub Actions for plan/apply/drift, pre-commit quality gates, and LocalStack-first AWS compatibility documented in `.lab/reality/ARCHITECTURE.md`.

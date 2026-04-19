@@ -22,7 +22,7 @@ terraform-reference-lab/
 ├── .terraform-version               # tfenv-style pin (1.5.7)
 ├── .tflint.hcl                      # AWS + Azure + GCP rulesets (hashicorp/aws ~0.30, azurerm ~0.26, google ~0.28)
 │
-├── lab/                            # Lab OS KNOWLEDGE LAYER
+├── .lab/                           # Lab OS KNOWLEDGE LAYER
 │   ├── intent/
 │   │   ├── ARCHITECTURE_TARGET.md       # Contract file (Lab OS required)
 │   │   ├── PURPOSE.md

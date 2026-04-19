@@ -20,7 +20,7 @@ agnostic/
   README.md (this tree lives under agnostic/)
   root/     → README.md, AGENTS.md copied to target root
   docs/     → companion docs
-  lab/      → knowledge layer
+  lab/      → knowledge layer (copied to `.lab/` by default; use `--knowledge-dir lab` for `lab/`)
   .ai/      → harness namespace
   lab.yaml
 ```

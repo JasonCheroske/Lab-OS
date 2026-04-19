@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-17
+updated: 2026-04-19
 ---
 
 # Lab Contract
@@ -9,12 +9,12 @@ updated: 2026-04-17
 
 **Related paths:** [README.md](README.md), [../20-governance/GOVERNANCE_MODEL.md](../20-governance/GOVERNANCE_MODEL.md)
 
-**Last reviewed:** 2026-03-27 — optional root onboarding (`README.md`, `AGENTS.md`) and `docs/` companions; validation requirements unchanged.
+**Last reviewed:** 2026-04-19 — `init` defaults to repo-root **`.lab/`** for the knowledge layer; optional root onboarding and `docs/` companions unchanged for validation.
 
 ## Required artifacts
 
 - `lab.yaml`
-- Knowledge layer at **either** repo-root `lab/` **or** `.lab/` (same subtree below that root):
+- Knowledge layer at **either** repo-root **`.lab/`** **or** `lab/` (same subtree below that root; **`lab-os` `init` defaults to `.lab/`**):
   - `intent/ARCHITECTURE_TARGET.md`
   - `reality/IMPLEMENTATION_MAP.md`
   - `delta/GAP_MAP.md`
@@ -33,7 +33,7 @@ These paths improve discoverability but are **not** required by `scripts/validat
 
 - Root **`README.md`** — human-facing startup arc, pillar links, validate/promote hints; points to Lab OS runbooks.
 - Root **`AGENTS.md`** — suggested read order and rules of thumb for AI assistants.
-- Root **`docs/README.md`** — short index linking `lab/*` pillars (and room for product doc links).
+- Root **`docs/README.md`** — short index linking `.lab/*` or `lab/*` pillars (and room for product doc links).
 - Root **`docs/project-structure.md`** — starter tree and notes (e.g. engineering root vs git root).
 - **`.ai/`** — harness-agnostic AI workspace (skills, rules, and Cursor/Claude/other harness config). Recommended for AI-native labs; provides the investigation deck and prevents context drift across sessions. See [ADR-0002](../50-adr/ADR-0002-ai-harness-namespace.md) for the harness namespace model and gitignore policy.
 
@@ -45,6 +45,7 @@ Initialized seeds copy these from the template archetype (default: `template/agn
 | Date       | Change summary                                   | Major structural change | Editor         |
 | ---------- | ------------------------------------------------ | ----------------------- | -------------- |
 | 2026-04-05 | Added `.ai/` harness namespace as recommended companion; linked ADR-0002. | no | — |
+| 2026-04-19 | Document `init` default `.lab/`; knowledge layer may be `.lab/` or `lab/` at repo root. | no | — |
 | 2026-04-04 | Knowledge layer may be `lab/` or `.lab/` at repo root (same subtree); validation updated. | no                      | —              |
 | 2026-03-27 | Documented optional root `README.md`, `AGENTS.md`, and `docs/*` companions; validation unchanged. | no                      | Jason Cheroske |
 | 2026-03-26 | Migrated into taxonomy with governance metadata. | yes                     | Jason Cheroske |

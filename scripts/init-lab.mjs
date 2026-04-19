@@ -33,10 +33,10 @@ if (!templateLayoutOk(templateRoot)) {
   process.exit(1);
 }
 
-const knowledgeDirRaw = args["knowledge-dir"] || "lab";
+const knowledgeDirRaw = args["knowledge-dir"] || ".lab";
 const knowledgeDir = knowledgeDirRaw === ".lab" || knowledgeDirRaw === "lab" ? knowledgeDirRaw : null;
 if (!knowledgeDir) {
-  console.error('Invalid --knowledge-dir: use "lab" (default) or ".lab"');
+  console.error('Invalid --knowledge-dir: use ".lab" (default) or "lab"');
   process.exit(1);
 }
 

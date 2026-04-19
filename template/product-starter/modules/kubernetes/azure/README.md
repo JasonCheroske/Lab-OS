@@ -7,7 +7,7 @@ updated: 2026-04-17
 
 <!-- emulator_supported: false (AKS: no Azure emulator available; requires real Azure subscription) -->
 
-AKS cluster with a user-assigned managed identity and autoscaling node pool. `node_count` is excluded from lifecycle to prevent drift on cluster autoscaler changes (see `lab/behavior/SCALER_POLICY.md`).
+AKS cluster with a user-assigned managed identity and autoscaling node pool. `node_count` is excluded from lifecycle to prevent drift on cluster autoscaler changes (see `.lab/behavior/SCALER_POLICY.md`).
 
 ## Outputs
 

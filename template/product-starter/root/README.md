@@ -5,7 +5,7 @@ updated: 2026-04-17
 
 # Terraform Reference Lab
 
-Operations-research-style reference workspace: a **Lab OS knowledge layer** (`lab.yaml`, [`lab/`](lab/)) and a **Terraform code layer** ([`modules/`](modules/), [`environments/`](environments/), [`.github/workflows/`](.github/workflows/)). The knowledge layer is what makes this an artifact for humans and agents—not only a pile of `.tf` files. Every major structural choice in Terraform should have a trace in `lab/` (intent, reality, delta, behavior, evidence).
+Operations-research-style reference workspace: a **Lab OS knowledge layer** (`lab.yaml`, [`.lab/`](.lab/)) and a **Terraform code layer** ([`modules/`](modules/), [`environments/`](environments/), [`.github/workflows/`](.github/workflows/)). The knowledge layer is what makes this an artifact for humans and agents—not only a pile of `.tf` files. Every major structural choice in Terraform should have a trace in `.lab/` (intent, reality, delta, behavior, evidence).
 
 For a **full directory tree**, see [docs/project-structure.md](docs/project-structure.md). For a short index of companion docs, see [docs/README.md](docs/README.md).
 
@@ -23,33 +23,33 @@ The lab targets all three major providers. Each cloud has a corresponding local 
 - **Azure**: Azurite covers storage only. Non-storage modules (`networking/azure`, `kubernetes/azure`) require real credentials or set `count = 0` via `emulator_mode = true`.
 - **GCP**: Pub/Sub and Firestore emulators run locally; networking and Kubernetes require real credentials or `emulator_mode = true`.
 - **`_bootstrap/<cloud>/`** creates the remote state backend for each cloud. Run these once, with real credentials and `emulator_mode = false`, before promoting beyond `experiment`; see each `_bootstrap/<cloud>/README.md` for prerequisites.
-- Switching any cloud to real infrastructure is **credentials + endpoints + backends**; see [lab/reality/ARCHITECTURE.md](lab/reality/ARCHITECTURE.md) for parity caveats.
+- Switching any cloud to real infrastructure is **credentials + endpoints + backends**; see [.lab/reality/ARCHITECTURE.md](.lab/reality/ARCHITECTURE.md) for parity caveats.
 
 ## Navigate
 
 | Layer | Start here |
 | --- | --- |
-| Why / ADRs | [lab/intent/PURPOSE.md](lab/intent/PURPOSE.md), [lab/intent/DESIGN_DECISIONS.md](lab/intent/DESIGN_DECISIONS.md) |
-| Cloud equivalency | [lab/intent/CLOUD_EQUIVALENCY.md](lab/intent/CLOUD_EQUIVALENCY.md) |
-| What / contracts | [lab/reality/IMPLEMENTATION_MAP.md](lab/reality/IMPLEMENTATION_MAP.md), [lab/reality/MODULE_CONTRACTS.md](lab/reality/MODULE_CONTRACTS.md) |
+| Why / ADRs | [.lab/intent/PURPOSE.md](.lab/intent/PURPOSE.md), [.lab/intent/DESIGN_DECISIONS.md](.lab/intent/DESIGN_DECISIONS.md) |
+| Cloud equivalency | [.lab/intent/CLOUD_EQUIVALENCY.md](.lab/intent/CLOUD_EQUIVALENCY.md) |
+| What / contracts | [.lab/reality/IMPLEMENTATION_MAP.md](.lab/reality/IMPLEMENTATION_MAP.md), [.lab/reality/MODULE_CONTRACTS.md](.lab/reality/MODULE_CONTRACTS.md) |
 | Terraform entry | [environments/dev/aws/main.tf](environments/dev/aws/main.tf) → [`modules/*/aws/`](modules/) |
 | Multi-cloud guide | [docs/multi-cloud-guide.md](docs/multi-cloud-guide.md) |
-| CI behavior | [lab/behavior/CICD_CONTRACT.md](lab/behavior/CICD_CONTRACT.md) ↔ `.github/workflows/` |
+| CI behavior | [.lab/behavior/CICD_CONTRACT.md](.lab/behavior/CICD_CONTRACT.md) ↔ `.github/workflows/` |
 
 ## Two-layer principle (doc ↔ code)
 
-| `lab/` document | Terraform layer it explains |
+| `.lab/` document | Terraform layer it explains |
 | --- | --- |
-| [lab/intent/DESIGN_DECISIONS.md](lab/intent/DESIGN_DECISIONS.md) | Why `modules/` use `<domain>/<cloud>/` layout; separate state per `<env>/<cloud>` |
-| [lab/intent/CLOUD_EQUIVALENCY.md](lab/intent/CLOUD_EQUIVALENCY.md) | `modules/*/azure/` and `modules/*/gcp/` — service-level equivalency decisions |
-| [lab/reality/MODULE_CONTRACTS.md](lab/reality/MODULE_CONTRACTS.md) | `variables.tf` / `outputs.tf` in each module; `modules/_interface/contracts/*.yaml` |
-| [lab/delta/DRIFT_POLICY.md](lab/delta/DRIFT_POLICY.md) | [drift-detection.yml](.github/workflows/drift-detection.yml) |
-| [lab/behavior/SCALER_POLICY.md](lab/behavior/SCALER_POLICY.md) | `lifecycle { ignore_changes = [scaling_config[0].desired_size] }` on EKS / AKS / GKE node groups |
-| [lab/behavior/FAILOVER_POLICY.md](lab/behavior/FAILOVER_POLICY.md) | `modules/messaging/aws\|azure\|gcp` — SQS DLQ, Service Bus dead-letter, Pub/Sub dead_letter_policy |
-| [lab/evidence/VALIDATION_MATRIX.md](lab/evidence/VALIDATION_MATRIX.md) | [tests/](tests/) — LocalStack, Azurite, GCP emulator compose files |
+| [.lab/intent/DESIGN_DECISIONS.md](.lab/intent/DESIGN_DECISIONS.md) | Why `modules/` use `<domain>/<cloud>/` layout; separate state per `<env>/<cloud>` |
+| [.lab/intent/CLOUD_EQUIVALENCY.md](.lab/intent/CLOUD_EQUIVALENCY.md) | `modules/*/azure/` and `modules/*/gcp/` — service-level equivalency decisions |
+| [.lab/reality/MODULE_CONTRACTS.md](.lab/reality/MODULE_CONTRACTS.md) | `variables.tf` / `outputs.tf` in each module; `modules/_interface/contracts/*.yaml` |
+| [.lab/delta/DRIFT_POLICY.md](.lab/delta/DRIFT_POLICY.md) | [drift-detection.yml](.github/workflows/drift-detection.yml) |
+| [.lab/behavior/SCALER_POLICY.md](.lab/behavior/SCALER_POLICY.md) | `lifecycle { ignore_changes = [scaling_config[0].desired_size] }` on EKS / AKS / GKE node groups |
+| [.lab/behavior/FAILOVER_POLICY.md](.lab/behavior/FAILOVER_POLICY.md) | `modules/messaging/aws\|azure\|gcp` — SQS DLQ, Service Bus dead-letter, Pub/Sub dead_letter_policy |
+| [.lab/evidence/VALIDATION_MATRIX.md](.lab/evidence/VALIDATION_MATRIX.md) | [tests/](tests/) — LocalStack, Azurite, GCP emulator compose files |
 | [`scripts/validate-contracts.mjs`](scripts/validate-contracts.mjs) | `modules/_interface/contracts/*.yaml` — enforces output keys, standard vars, `emulator_supported` |
 
-**Queue URL → workloads:** [environments/dev/aws/outputs.tf](environments/dev/aws/outputs.tf) exposes `queue_url` for wiring into EKS (ConfigMap, Helm, external secrets, etc.); see [lab/behavior/FAILOVER_POLICY.md](lab/behavior/FAILOVER_POLICY.md).
+**Queue URL → workloads:** [environments/dev/aws/outputs.tf](environments/dev/aws/outputs.tf) exposes `queue_url` for wiring into EKS (ConfigMap, Helm, external secrets, etc.); see [.lab/behavior/FAILOVER_POLICY.md](.lab/behavior/FAILOVER_POLICY.md).
 
 ## Maturity stages (`lab.yaml` → `maturityStage`)
 
@@ -60,7 +60,7 @@ The lab targets all three major providers. Each cloud has a corresponding local 
 | `pilot` **(current)** | Modules + GitHub Actions CI/CD + `terraform test` wiring checks | `wiring-test` + `checkov` + `contract-check` jobs all pass; drift detection active |
 | `production` | Drift job, Checkov, Terratest against real cloud or staging | Nightly [drift-detection.yml](.github/workflows/drift-detection.yml); tighten Checkov baselines; unskip all tests |
 
-Promote maturity only when evidence matches the stage (see [lab/evidence/READINESS_CHECKS.md](lab/evidence/READINESS_CHECKS.md) and [lab/evidence/READINESS_CHECKLIST.md](lab/evidence/READINESS_CHECKLIST.md)).
+Promote maturity only when evidence matches the stage (see [.lab/evidence/READINESS_CHECKS.md](.lab/evidence/READINESS_CHECKS.md) and [.lab/evidence/READINESS_CHECKLIST.md](.lab/evidence/READINESS_CHECKLIST.md)).
 
 ## Lab OS validate (from `lab-os-lab` checkout)
 
@@ -79,7 +79,7 @@ This verifies that every `modules/<domain>/<cloud>/outputs.tf` exposes the keys 
 
 **Do not** run `npm run lab:init` against this folder if you want to stay on `experiment`: that pipeline **auto-promotes to `poc`** (see `scripts/lab-init.mjs` in the Lab OS `lab-os-lab` repository). Use `npm run validate` only.
 
-`validate-lab.mjs` checks `lab.yaml` schema, required `lab/*` (or `lab/*`) files, and the approval matrix—it does **not** run `tflint`, `checkov`, or `terraform plan`. Those are declared in `lab.yaml` and enforced via **pre-commit** and CI.
+`validate-lab.mjs` checks `lab.yaml` schema, required `.lab/*` (or `lab/*`) files, and the approval matrix—it does **not** run `tflint`, `checkov`, or `terraform plan`. Those are declared in `lab.yaml` and enforced via **pre-commit** and CI.
 
 ## Terraform and quality gates
 
@@ -117,8 +117,8 @@ Committed **`.terraform.lock.hcl`** files live under each `<env>/<cloud>/` direc
 
 To ship **only** this lab, copy this directory as the **git root** of a new repository so `.github/workflows/` applies. While it lives under `lab-os-lab/.tmp/`, it is **gitignored** from the Lab OS seed repo and acts as a local reference or export source.
 
-## Why `lab/` instead of `lab/`?
+## Why `.lab/` (and when to use `lab/`)
 
-The knowledge layer is **project metadata**: governance, ADRs, drift policy, and AI/human context that you might **omit** when publishing a slim “Terraform-only” export (while keeping `modules/`, `environments/`, and `lab.yaml` if you still want the manifest). A **dot-directory** reads as “sidecar context,” not application code. Some IDEs hide dot-folders by default—turn on “show hidden” if you do not see `lab/` in the tree.
+The knowledge layer is **project metadata**: governance, ADRs, drift policy, and AI/human context that you might **omit** when publishing a slim “Terraform-only” export (while keeping `modules/`, `environments/`, and `lab.yaml` if you still want the manifest). Default **`init`** places it under **`.lab/`** so it reads as sidecar context next to application code. Some IDEs hide dot-folders by default—turn on “show hidden” if you do not see `.lab/` in the tree.
 
-**Lab OS** accepts **either** `lab/` or `lab/` at the repo root (`validate-lab.mjs` resolves one; having both is an error). This reference lab uses **`lab/`**. New seeds can opt in with `npm run init -- --target <path> --knowledge-dir .lab` from the Lab OS toolkit.
+**Lab OS** accepts **either** `.lab/` or `lab/` at the repo root (`validate-lab.mjs` resolves one; having both is an error). Use **`npm run init -- --target <path> --knowledge-dir lab`** from the Lab OS toolkit if you prefer a non-hidden folder name.
