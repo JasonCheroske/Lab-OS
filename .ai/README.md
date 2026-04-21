@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-21
 ---
 
 # `.ai/` — AI workspace namespace

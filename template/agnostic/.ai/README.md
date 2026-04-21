@@ -1,6 +1,6 @@
 ---
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-04-21
 ---
 
 # `.ai/` — AI workspace namespace
@@ -16,6 +16,7 @@ This folder is the **harness-agnostic AI workspace** for this lab. It ships with
   rules/                ← agnostic rules (work in any harness)
   .cursor/              ← Cursor-specific skills and rules
     skills/
+      flow-diagram/     ← GitDiagram-style Mermaid architecture maps + lookup tables
       lab-init/         ← conversation-first design and scaffold workflow
     rules/
       lab-init-default.mdc
@@ -35,6 +36,7 @@ This folder is the **harness-agnostic AI workspace** for this lab. It ships with
 | Path | Purpose |
 |------|---------|
 | `.ai/skills/harness-fetch/` | Skill: pull your harness config from `.ai/.<harness>/` into your local working environment |
+| `.ai/.cursor/skills/flow-diagram/` | Cursor skill: canonical Mermaid architecture flowchart (colors, tables, path validation) |
 | `.ai/.cursor/skills/lab-init/` | Cursor skill: conversation-first design → scaffold workflow |
 | `.ai/.cursor/rules/lab-init-default.mdc` | Cursor rule: prefer `/lab-init` for bootstrap intents |
 

@@ -1,6 +1,6 @@
 {
   "name": "lab-os",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Canonical GitHub seed for AI-native engineering lab scaffolding, governance, and validation workflows.",
   "private": false,
   "type": "module",

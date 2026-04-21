@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-06
+updated: 2026-04-21
 ---
 
 # Release runbook (GitHub + npm)
@@ -59,7 +59,7 @@ If wrapper and explicit CLI outcomes differ, treat as release blocker.
    - `node ../../scripts/validate-lab.mjs --target .`
    - `node ../../scripts/promote-stage.mjs --target . --to poc`
 4. Verify `.ai/` is present in artifact:
-   - Confirm `README.md`, `.cursor/skills/lab-init/SKILL.md`, `.cursor/rules/lab-init-default.mdc` (or equivalent) are present.
+   - Confirm `README.md`, `.cursor/skills/lab-init/SKILL.md`, `.cursor/skills/flow-diagram/SKILL.md`, `.cursor/rules/lab-init-default.mdc` (or equivalent) are present.
 5. Finalize release notes with tarball filename and checksum.
 6. Merge release PR.
 

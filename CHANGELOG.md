@@ -1,6 +1,6 @@
 ---
 created: 2026-04-06
-updated: 2026-04-19
+updated: 2026-04-21
 ---
 
 # Changelog
@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY.md).
 
 ## [Unreleased]
+
+## [0.3.2] - 2026-04-21
+
+### Added
+
+- **`flow-diagram` in init template:** Every archetype (`agnostic`, `meta`, `product-starter`) ships `.ai/.cursor/skills/flow-diagram/` (`SKILL.md`, `reference.md`, `examples.md`) so labs created with `lab-os init` include the GitDiagram-style architecture flowchart skill.
+
+### Changed
+
+- **`/flow-diagram` skill:** Documented default visual contract (init line, full `classDef` palette, stacked subgraphs and row bands, tables not `click`); expanded examples with copy-paste palette; clarified that the maintained [LAB_ARCHITECTURE_FLOWCHART](https://github.com/JasonCheroske/Lab-OS/blob/main/lab-os-lab/docs/60-reference/LAB_ARCHITECTURE_FLOWCHART.md) is the layout reference while [EXAMPLE_FLOWCHART](https://github.com/JasonCheroske/Lab-OS/blob/main/lab-os-lab/docs/60-reference/EXAMPLE_FLOWCHART.md) is historical; added guidance for non–Lab-OS repos (e.g. default `docs/architecture/SYSTEM_MAP.md`).
 
 ### Fixed
 
@@ -71,7 +81,8 @@ as described in [docs/40-release/SEMVER_POLICY.md](docs/40-release/SEMVER_POLICY
 
 - Initial public seed release (`v0.1.0`): scaffold, validation, promotion, tarball artifact, and runbooks.
 
-[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/JasonCheroske/Lab-OS/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.3.2
 [0.3.1]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.3.1
 [0.3.0]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.3.0
 [0.2.1]: https://github.com/JasonCheroske/Lab-OS/releases/tag/v0.2.1
